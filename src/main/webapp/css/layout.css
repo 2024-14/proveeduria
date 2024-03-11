@@ -1,0 +1,1029 @@
+/* 
+    Document   : layout
+    Created on : 27/04/2011, 10:56:15 AM
+    Author     : Usuario
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* box
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/logo
+*/
+html{color:#000; height: 100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+abbr,acronym {border:0;font-variant:normal;}
+/* to preserve line-height and selector appearance */
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+/*to enable resizing for IE*/
+input,textarea,select{
+    font-size:100%;}
+/*because legend doesn�t inherit in IE */
+legend{color:#000;}
+a {outline: 0;}
+
+/*Con este li quito las viñetas*/
+li{list-style:none;}
+
+
+.breadcrumb {
+	line-height: 26px;
+}
+.underline {
+	text-decoration: underline;
+}
+.logo {
+	font-size: 15px;
+	line-height: 25px;
+}
+#logged {
+	line-height: 26px;
+	padding-right: 10px;
+}
+
+body
+{
+  margin: 0 auto;
+  padding: 0;
+  background-color: #E3E3E3;
+  /*fecha:25/04/2011 :Nota:lo quite porque estoy modificando*/
+  /*background-image: url('../img2/Page-BgTexture.jpg');*/
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top left;
+}
+
+
+
+/*------------------Basico-------------------------------*/
+a {
+	color: black;
+	text-decoration: none;
+}
+input {
+	outline: 0;
+}
+strong {
+	font-weight: bold;
+}
+.clear {
+	clear: both;
+}
+.fl {
+	float: left !important;
+}
+.fr {
+	float: right !important;
+}
+.underline {
+	text-decoration: underline;
+}
+.s_1 {
+	width: 1px;
+	height: 27px;
+	background: url("../img/spacer.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/spacer.jpg*/ no-repeat center top;
+	padding: 0 10px;
+}
+.s_2 {
+	width: 1px;
+	height: 27px;
+	padding: 0 3px;
+}
+.s_3  {
+	width: 7px;
+	height: 34px;
+	float: left;
+}
+
+hr {
+	height: 1px;
+	background: #e5e4e4;
+	border: 0;
+	margin: 20px 0;
+}
+p {
+	padding: 0 0 10px 0;
+	line-height: 24px;
+}
+.box-content .ui-resizable-handle {
+	bottom: 17px;
+	right: 9px;
+}
+.hide {
+	display: none;
+}
+.ui-widget {
+	font-size: 1em;
+}
+/*--------fin de basico------------------------*/
+.Main
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.cleared
+{
+  float: none;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size:1px;
+}
+
+
+/* end Page */
+
+/* begin Box, Sheet */
+.Sheet
+{
+  overflow: hidden;
+  min-width:51px;
+  /*aqui el minheight era 51 le cambie*/
+  min-height:51px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+  /*se puede modificar para alterar el ancho:900*/
+  width: 950px;
+  /*si aletras la hoja debes alterar*/
+  /*.contentLayout .content y .content*/
+}
+
+
+.Sheet-body
+{
+  position: relative;
+  z-index: 0;/*5px*/
+  margin: 0px;
+}
+
+.Sheet-tl
+{
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  /*kkkkkk ??*/
+  background-image: url('../img2/cuadro.png');
+}
+
+.Sheet-tr
+{
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.Sheet-tr div
+{
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: -35px;
+  width: 70px;
+  height: 70px;
+  /*kkkkkk ??*/
+  background-image: url('../img2/cuadro.png');
+}
+
+.Sheet-bl
+{
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.Sheet-bl div
+{
+  position: absolute;
+  z-index: -1;
+  top: -35px;
+  left: 0;
+  width: 70px;
+  height: 70px;
+   /*antes estaba esto*/
+  /*background-image: url('../img2/Sheet-s.png');*/
+  background-image: url('../img2/cuadro.png');
+}
+
+.Sheet-br
+{
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.Sheet-br div
+{
+  position: absolute;
+  z-index: -1;
+  top: -35px;
+  left: -35px;
+  width: 70px;
+  height: 70px;
+  /*kkkkkk ??*/
+  /*background-image: url('../img2/Sheet-s.png');*/
+  background-image: url('../img2/cuadro.png');
+}
+
+.Sheet-tc
+{
+  position: absolute;
+  overflow:hidden;
+  z-index: -1;
+  top: 0;
+  left: 35px;
+  right: 35px;
+  height: 35px;
+}
+
+.Sheet-tc div
+{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  /*lo quite barras shady de los lados kkk???*/
+ /* background-image: url('../img2/Sheet-h.png');*/
+   background-image: url('../img2/imgH_1.png');
+}
+
+.Sheet-bc
+{
+  position: absolute;
+  overflow:hidden;
+  z-index: -1;
+  bottom: 0;
+  left: 35px;
+  right: 35px;
+  height: 35px;
+}
+
+.Sheet-bc div
+{
+  position: absolute;
+  z-index: -1;
+  top: -35px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+   /*lo quite barras shady de los lados kkk???*/
+ /* background-image: url('../img2/Sheet-h.png');*/
+  background-image: url('../img2/imgH_1.png');
+}
+
+.Sheet-cl
+{
+  position: absolute;
+  overflow:hidden;
+  z-index: -1;
+  top: 35px;
+  left: 0;
+  width: 35px;
+  bottom: 35px;
+}
+
+.Sheet-cl div
+{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 100%;
+  /*lo quit ewilfo no me gusta de los lados shady bar*/
+  background-image: url('../img2/img_40.png');
+}
+
+.Sheet-cr
+{
+  position: absolute;
+  overflow:hidden;
+  z-index: -1;
+  top: 35px;
+  right: 0;
+  width: 35px;
+  bottom: 35px;
+}
+
+.Sheet-cr div
+{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: -35px;
+  width: 70px;
+  height: 100%;
+   /*lo quit ewilfo no me gusta de los lados shady bar*/
+   background-image: url('../img2/img_40.png');
+  /*background-image: url('../img2/Sheet-v.png');*/
+}
+
+.Sheet-cc
+{
+  position: absolute;
+  overflow:hidden;
+  z-index: -2;
+  top: 35px;
+  left: 35px;
+  right: 35px;
+  bottom: 35px;
+  background-image: url('../img2/Sheet-c.png');
+}
+
+
+.Sheet
+{
+    /*me posiciona el div puede meterse dentro de cualquier contenedor*/
+    /*la hoja tiene 30 de margen pero la cambie a 0px para no poder*/
+  margin-top: 0px !important;
+}
+
+.contentLayout
+{
+  margin-bottom: 5px;
+  /*890*/
+  width: 950px;
+  position: relative;
+  /*si aletraste el width de la hoja tambien este debe ser aletrado*/
+}
+/* end ContentLayout */
+
+
+body
+{
+  font-family: Arial, Helvetica, Sans-Serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  color: #52594F;
+}
+
+/*cabecera**************************** */
+/* begin Header :aqui voy a meter la cabecera de magneto */
+div.Header
+{
+  margin: 0 auto;
+  position: relative;
+  z-index:0;
+  width: 890px;
+  height: 200px;/*altura de la caebcera*/
+ 
+}
+#cabecera1 {
+    position: relative;
+     z-index:0;
+     height: 50px;
+}
+
+#topbar {
+	height: 26px;
+	background: url("../img/back_topbar.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_topbar.jpg*/ repeat-x left top;
+	padding: 6px 20px;
+
+}
+#topbar li {
+	float: left;
+}
+
+/*fin de cabecera************************************* */
+
+/* --------------
+NAVIGATION
+* -------------*/
+#navbar{
+	height: 48px;
+	background: url("../img/back_navbar.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_navbar.jpg*/ repeat-x left top;
+	border-top: 1px solid black;
+	border-bottom: 1px solid #a2daff;
+	padding: 0 0 0 20px;
+}
+
+#navbar a {
+	display: block;
+	padding: 0 10px;
+	color: white;
+}
+#navbar li {
+	float: left;
+	margin: 8px 3px 0;
+	text-transform: capitalize;
+	font-size: 13px;
+	color: white;
+	line-height: 33px;
+	text-shadow: 0 1px 0 #001727;
+}
+#navbar li span {
+	padding: 14px 0 0 0;
+}
+#navbar li:hover {
+	background: url("../img/back_nav_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_nav_hover.jpg*/ repeat-x left center;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow:inset 0 2px 3px black;
+}
+#navbar li.active {
+	background: url("../img/back_navbar_active.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_navbar_active.jpg*/ repeat-x;
+	line-height: 50px;
+	margin: 0;
+	-moz-box-shadow:inset 0 3px 4px black;
+	text-shadow: 0 1px 0 black;
+}
+#navbar li.active span {
+	padding: 30px 0 0 0;
+}
+#navbar li.active:hover {
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+/* --------------
+SUBNAVIGATION
+* -------------*/
+#subnavbar {
+	height: 50px;
+	background: url("../img/back_subnavbar.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_subnavbar.png*/ repeat-x;
+	padding: 0 0 0 20px;
+}
+/*wilfo subnav*/
+
+
+/*fin del subnav*/
+#navbar ul {
+	position: absolute;
+	top: 95px;
+}
+#navbar ul li {
+	float: left;
+	margin: 0;
+	text-transform: capitalize;
+	font-size: 13px;
+	color: white;
+	line-height: 23px !important;
+	text-shadow: 0 1px 0 white;
+	margin: 0 10px 0 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#navbar ul li a {
+	display: block;
+	color: black;
+}
+#navbar ul li a span {
+	padding: 8px 0 0 0 !important;
+}
+#navbar ul .active {
+	margin-right: 10px !important;
+}
+#navbar ul .subbutton{
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow:0 1px 1px black;
+}
+#navbar ul .active .subbutton{
+	background: url("../img/subbutton_active.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/subbutton_active.jpg*/ repeat-x left top;
+	border: 1px solid #2a9fee;
+	-moz-box-shadow: inset 0 1px 2px black;
+}
+#navbar ul .active .subbutton:hover{
+	background: url("../img/subbutton_active.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/subbutton_active.jpg*/ repeat-x left top;
+	border: 1px solid #2a9fee;
+	-moz-box-shadow: inset 0 1px 2px black;
+}
+#navbar ul .subbutton:hover{
+	background: url("../img/subbutton_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/subbutton_hover.jpg*/ repeat-x left top;
+	-moz-box-shadow: inset 0 1px 2px #707070;
+}
+#navbar ul .active a{
+	color: white;
+	text-shadow: 0 1px 0 #0669af;
+}
+/* fin de navegacion*/
+
+/* begin LayoutCell */
+.contentLayout .content
+{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  float: left;
+  overflow: hidden;
+  /*540*/
+  width: 850px;
+  /*si aletraste la hoja y content tambien este dbe ser aletrado*/
+}
+
+.contentLayout li
+{
+  float: none;
+}
+
+/*botones*/
+.button {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 4px 8px;
+	text-transform: capitalize;
+	text-decoration: none;
+	font-weight: bold;
+	-moz-box-shadow: 0 1px 2px #343434;
+	-webkit-box-shadow: 0 1px 2px #343434;
+	cursor: pointer;
+}
+.white {
+	background: #dfdfdf url("../img/back_white.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_white.jpg*/ repeat-x left top;
+	border: 1px solid white;
+}
+.white:hover {
+	background: white url("../img/back_white_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_white_hover.jpg*/ repeat-x left top;
+}
+.red{
+	background: #940101 url("../img/back_red.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_red.jpg*/ repeat-x left top;
+	color: white !important;
+	border: 1px solid #eb0000;
+}
+.red:hover {
+	background: #cb0000 url("../img/back_red_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_red_hover.jpg*/ repeat-x left top;
+}
+.black{
+	background: #141213 url("../img/back_black.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_black.jpg*/ repeat-x left top;
+	color: white !important;
+	border: 1px solid black;
+}
+.black:hover {
+	background: #292728 url("../img/back_black_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_black_hover.jpg*/ repeat-x left top;
+}
+.themed{
+	background: #0669af url("../img/back_blue.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_blue.jpg*/ repeat-x left top;
+	color: white !important;
+	border: 1px solid #2a9fee;
+}
+.themed:hover {
+	background: #248bd0 url("../img/back_blue_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_blue_hover.jpg*/ repeat-x left top;
+}
+.grey{
+	background: #bababa url("../img/back_grey.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_grey.jpg*/ repeat-x left top;
+	border: 1px solid #e3e3e3;
+}
+.grey:hover {
+	background: #e3e3e3 url("../img/back_grey_hover.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_grey_hover.jpg*/ repeat-x left top;
+}
+.icon_single {
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+.icon_text {
+	width: 16px;
+	height: 16px;
+	float:left;
+	margin-right: 5px;
+}
+/*fin de botones*/
+/* --------------
+ICONS
+* -------------*/
+.preview {
+	background: url("../img/preview.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/preview.png*/ no-repeat center center;
+}
+.logout {
+	background: url("../img/logout.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/logout.png*/ no-repeat center center;
+}
+.mail {
+	background: url("../img/mail.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/mail.png*/ no-repeat center center;
+}
+.admin {
+	background: url("../img/admin.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/admin.png*/ no-repeat center center;
+}
+.dashboard {
+	background: url("../img/home.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/home.png*/ no-repeat center center;
+}
+.content {
+	background: url("../img/content.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/content.png*/ no-repeat center center;
+}
+.design {
+	background: url("../img/design.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/design.png*/ no-repeat center center;
+}
+.pages{
+	background: url("../img/pages.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/pages.png*/ no-repeat center center;
+}
+.users {
+	background: url("../img/users.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/users.png*/ no-repeat center center;
+}
+.media {
+	background: url("../img/media.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/media.png*/ no-repeat center center;
+}
+.comment{
+	background: url("../img/comment.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/comment.png*/ no-repeat center center;
+}
+.stats {
+	background: url("../img/stats.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/stats.png*/ no-repeat center center;
+}
+.settings {
+	background: url("../img/settings.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/settings.png*/ no-repeat center center;
+}
+.general{
+	background: url("../img/general.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/general.png*/ no-repeat center center;
+}
+#navbar ul .active .general{
+	background: url("../img/general_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/general_white.png*/ no-repeat center center;
+}
+.tab {
+	background: url("../img/tabs.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/tabs.png*/ no-repeat center center;
+}
+#navbar ul .active .tab {
+	background: url("../img/tabs_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/tabs_white.png*/ no-repeat center center;
+}
+.tab {
+	background: url("../img/tabs.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/tabs.png*/ no-repeat center center;
+}
+.typography{
+	background: url("../img/typo.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/typo.png*/ no-repeat center center;
+}
+#navbar ul .active .typography{
+	background: url("../img/typo_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/typo_white.png*/ no-repeat center center;
+}
+.grids{
+	background: url("../img/grids.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/grids.png*/ no-repeat center center;
+}
+#navbar ul .active .grids{
+	background: url("../img/grids_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/grids_white.png*/ no-repeat center center;
+}
+.tables{
+	background: url("../img/tables.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/tables.png*/ no-repeat center center;
+}
+#navbar ul .active .tables{
+	background: url("../img/tables_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/tables_white.png*/ no-repeat center center;
+}
+.forms {
+	background: url("../img/forms.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/forms.png*/ no-repeat center center;
+}
+#navbar ul .active .forms {
+	background: url("../img/forms_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/forms_white.png*/ no-repeat center center;
+}
+.graphs {
+	background: url("../img/graphs.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/graphs.png*/ no-repeat center center;
+}
+#navbar ul .active .graphs {
+	background: url("../img/graphs_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/graphs_white.png*/ no-repeat center center;
+}
+.gallery {
+	background: url("../img/gallery.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/gallery.png*/ no-repeat center center;
+}
+#navbar ul .active .gallery {
+	background: url("../img/gallery_white.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/gallery_white.png*/ no-repeat center center;
+}
+.accept {
+	background: url("../img/accept.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/accept.png*/ no-repeat center center;
+}
+.cancel {
+	background: url("../img/cancel.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/cancel.png*/ no-repeat center center;
+}
+.addnew{
+	background: url("../img/addnew.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/addnew.png*/ no-repeat center center;
+}
+.edit{
+	background: url("../img/edit.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/edit.png*/ no-repeat center center;
+}
+.save{
+	background: url("../img/save.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/save.png*/ no-repeat center center;
+}
+.search {
+	background: url("../img/search.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/search.png*/ no-repeat center center;
+}
+.cog{
+	background: url("../img/cog.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/cog.png*/ no-repeat center center;
+}
+.skin{
+	background: url("../img/skinner.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/skinner.png*/ no-repeat center center;
+}
+.language{
+	background: url("../img/language.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/language.png*/ no-repeat center center;
+}
+.avi {
+	background:url("../img/avi.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/avi.png*/ repeat-x left top;
+}
+.bmp {
+	background:url("../img/bmp.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/bmp.png*/ repeat-x left top;
+}
+.css {
+	background:url("../img/css.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/css.png*/ repeat-x left top;
+}
+.doc {
+	background:url("../img/doc.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/doc.png*/ repeat-x left top;
+}
+.gif {
+	background:url("img/gif.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/gif.png*/ repeat-x left top;
+}
+.htm {
+	background:url("../img/htm.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/htm.png*/ repeat-x left top;
+}
+.js {
+	background:url("../img/js.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/js.png*/ repeat-x left top;
+}
+.jpg {
+	background:url("../img/jpg.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/jpg.png*/ repeat-x left top;
+}
+.pdf {
+	background:url("../img/pdf.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/pdf.png*/ repeat-x left top;
+}
+.php {
+	background:url("../img/php.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/php.png*/ repeat-x left top;
+}
+.png {
+	background:url("../img/png.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/png.png*/ repeat-x left top;
+}
+.ppt {
+	background:url("../img/ppt.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/ppt.png*/ repeat-x left top;
+}
+.rar {
+	background:url("../rar.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/rar.png*/ repeat-x left top;
+}
+.txt {
+	background:url("../img/txt.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/txt.png*/ repeat-x left top;
+}
+.video {
+	background:url("../img/video.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/video.png*/ repeat-x left top;
+}
+.xls {
+	background:url("../img/xls.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/xls.png*/ repeat-x left top;
+}
+.xml {
+	background:url("../img/xml.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/xml.png*/ repeat-x left top;
+}
+.zip {
+	background:url("../img/zip.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/zip.png*/ repeat-x left top;
+}
+.extend {
+	background:url("../img/table_collapse.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/table_collapse.png*/ repeat-x left top;
+}
+/* --------------*/
+
+/* --------------
+SEARCH / SKIN / LANGUAGE
+* -------------*/
+#search_form {
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	right: 20px;
+	top: 87px;
+}
+#search_input {
+	padding: 5px;
+	height: 17px;
+	width: 220px;
+	line-height: 15px;
+	border: 0;
+	-moz-border-radius: 5px;
+	-webkit-border-bottom: 5px;
+	margin: 7px 0 0 0;
+	background: url("../img/search_input.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/search_input.png*/ no-repeat right center white;
+}
+.flag {
+	width: 16px;
+	height: 11px;
+	margin: 3px 0 0 8px;
+}
+.it {
+	background: url("../img/it.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/it.png*/ no-repeat left top transparent;
+}
+.es {
+	background: url("../img/es.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/es.png*/ no-repeat left top transparent;
+}
+.en {
+	background: url("../img/gb.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/gb.png*/ no-repeat left top transparent;
+}
+.de{
+	background: url("../img/de.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/de.png*/ no-repeat left top transparent;
+}
+.skinner {
+	margin: 2px 10px 0 0;
+}
+.skin {
+	width: 20px;
+	height: 20px;
+	margin: 0 5px 0 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.skin_blue {
+	background: url("../img/back_blue.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_blue.jpg*/ repeat-x left top;
+	border: 1px solid #2a9fee;
+}
+.skin_green {
+	background: url("../img/back_green.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_green.jpg*/ repeat-x left top;
+	border: 1px solid #88c41a;
+}
+.skin_red {
+	background: url("../img/back_red_2.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_red_2.jpg*/ repeat-x left top;
+	border: 1px solid #f62323;
+}
+.skin_purple {
+	background: url("../img/back_purple.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_purple.jpg*/ repeat-x left top;
+	border: 1px solid #d839c0;
+}
+.language_button {
+	font-size: 0;
+	padding: 3px 6px 0 6px;
+}
+/*-------------------------------------*/
+
+/* --------------
+                              BOX
+* -------------*/
+.box {
+margin: 0 0 20px 0;
+position: relative;
+}
+.box-header {
+	background: #ececec url("../img/back_h2_box_white.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_h2_box_white.jpg*/ repeat-x left top;
+	height: 35px;
+	border: 1px solid #d8d8d8;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	line-height: 35px;
+	padding: 0 0 0 10px;
+	margin:0;
+	text-transform: capitalize;
+	font-weight: bold;
+	cursor: move;
+	text-shadow: 0 1px 0 white;
+	font-size: 14px;
+	-moz-box-shadow: 0 0 2px #dddddd;
+	-webkit-box-shadow: 0 0 2px #dddddd;
+	color: #0669af;
+}
+.box-header-new {
+	background: url("../img/header-new.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/header-new.png*/ no-repeat left top;
+	width: 76px;
+	height: 37px;
+	position: absolute;
+	z-index: 4;
+	right: 40px;
+}
+.themed_box .box-header {
+	background: #ececec url("../img/back_h2_box_blue.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_h2_box_blue.jpg*/ repeat-x left top;
+	color: white;
+	border: 1px solid #0669af;
+	text-shadow: 0 1px 0 #014b80;
+}
+.black_box .box-header {
+	background: #ececec url("../img/back_h2_box_black.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/back_h2_box_black.jpg*/ repeat-x left top;
+	color: white;
+	border: 1px solid #292929;
+	text-shadow: 0 1px 0 black;
+}
+.box-header.closed {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.close {
+	width: 27px;
+	height: 35px;
+	background: url("../img/close.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/close.png*/ no-repeat center center;
+	border-left: 1px solid #e5e4e4;
+	float: right;
+	cursor: n-resize;
+}
+.themed_box .close {
+	background: url("../img/close_blue.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/close_blue.png*/ no-repeat center center;
+	border-left: 1px solid #0669af;
+}
+.black_box .close {
+	background: url("../img/close_black.png")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/close_black.png*/ no-repeat center center;
+	border-left: 1px solid #292929;
+}
+.box-content {
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border: 1px solid #d8d8d8;
+	border-top: 0;
+	background: white;
+	padding:  10px;
+	-moz-box-shadow: 0 2px 2px #dddddd;
+	-webkit-box-shadow: 0 2px 2px #dddddd;
+
+
+}
+.box-col-250 {
+	width: 250px;
+	margin: 0 0 20px 0;
+ }
+.icon_table {
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin: 0 auto;
+}
+
+
+/*       ----------    fin de BOX ---------------------------------------------*/
+
+
+/*-------------------Content-------------------*/
+
+/* --------------
+CONTENT
+* -------------*/
+#content {
+	padding: 0 20px 110px;
+	margin: 20px 0 0 0;
+}
+.box-content .button {
+	margin: 0 10px 10px 0;
+	display: inline-block;
+
+}
+.box-content .tag {
+	margin: 0 10px 10px 0;
+	display: inline-block;
+
+}
+.box-content .bullet {
+	margin: 0 10px 0 0;
+}
+
+/* --------------
+COLUMN
+* -------------*/
+.column.full {
+	width: 100%;
+}
+.column.half {
+	width: 49%;
+	min-height: 400px;
+}
+.ui-sortable-placeholder {
+	visibility: visible !important;
+	height: 70px !important;
+	background: #87c7f2 !important;
+	-moz-border-radius: 5px !important;
+	-webkit-border-radius: 5px !important;
+ }
+ .ui-sortable-placeholder * {
+ visibility: hidden !important;
+ }
+
+.box .ui-sortable-placeholder {
+	height: 30px !important;
+	-moz-border-radius: 0px !important;
+	-moz-border-radius-topleft: 5px !important;
+	-moz-border-radius-topright: 5px !important;
+	-webkit-border-top-left-radius: 5px !important;
+	-webkit-border-top-right-radius: 5px !important;
+	background: #ededed !important;
+}
+ .box .ui-sortable-placeholder * {
+ visibility: hidden !important;
+ }
+
+ /*--------------------Fin de Content y Column--------------------*/
+
+/* FOOTER
+* -------------*/
+#footer {
+	background: url("../img/footer.jpg")/*tpa=http://www.mantizdev.net/magneto_admin/gfx/footer.jpg*/ repeat-x left top;
+	padding: 10px 20px;
+	height: 27px;
+	border-top: 2px solid black;
+	margin-top: -49px !important;
+}
+.copy {
+	color: white;
+	line-height: 27px;
+}

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proveeduria" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="style1"/>
+	<subDataset name="Table Dataset 1"/>
+	<parameter name="USUARIO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor" class="java.lang.String"/>
+	<parameter name="mes" class="java.lang.String"/>
+	<parameter name="Nsociedad" class="java.lang.String"/>
+	<parameter name="sociedad" class="java.lang.String"/>
+	<parameter name="ESTADO1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ESTADO2" class="java.lang.String"/>
+	<parameter name="ESTADO3" class="java.lang.String"/>
+	<parameter name="anio" class="java.lang.Integer"/>
+	<parameter name="fechaDesde" class="java.lang.String"/>
+	<parameter name="fechaHasta" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select LTRIM(a.material, '0') AS MATERIAL,
+       MAX(a.short_text) AS SHORT_TEXT,
+       a.preq_price,
+       nvl(sum(b.cantidad_recibida), 0) as Q_Despachada,
+       nvl(sum(b.cantidad_recibida) * a.preq_price, 0) as Costo_Total
+  from SAP.SAP_USUARIO_PORTAL c
+  join SAP.SAP_PROVEEDURIA_REPLICA a
+    on (a.Stcd1 = c.id_proveedor and a.bukrs = $P{sociedad} )
+  left join SAP.SAP_PROVEEDURIA_DETALLE_HIS b
+    on (b.solicitud = a.prheader and b.numero_linea = a.preq_item)
+ where c.usuario = decode($P{USUARIO},'todos', c.usuario,$P{USUARIO})
+	and a.rel_ind in ($P{ESTADO1},$P{ESTADO2},$P{ESTADO3})
+	  and c.sociedad = $P{sociedad}
+ 	and a.deliv_date between to_date($P{fechaDesde}, 'dd/mm/yyyy') and
+       to_date($P{fechaHasta}, 'dd/mm/yyyy')
+ Group by a.material, a.preq_price]]>
+	</queryString>
+	<field name="MATERIAL" class="java.lang.String"/>
+	<field name="SHORT_TEXT" class="java.lang.String"/>
+	<field name="PREQ_PRICE" class="java.math.BigDecimal"/>
+	<field name="Q_DESPACHADA" class="java.math.BigDecimal"/>
+	<field name="COSTO_TOTAL" class="java.math.BigDecimal"/>
+	<variable name="proveedor" class="java.lang.String"/>
+	<variable name="mes" class="java.lang.String"/>
+	<variable name="Nsociedad" class="java.lang.String"/>
+	<variable name="sum_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[($F{COSTO_TOTAL}>0)?$F{COSTO_TOTAL}:0]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="0" y="26" width="504" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Reporte Pre-Facturacion]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" mode="Opaque" backcolor="#CCCCCC" x="58" y="48" width="83" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{proveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" backcolor="#CCCCCC" x="184" y="46" width="57" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" backcolor="#CCCCCC" x="283" y="46" width="57" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{anio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="0" y="48" width="58" height="14" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Proveedor :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="141" y="48" width="42" height="14" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mes :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="241" y="48" width="42" height="14" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Año :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="339" y="48" width="50" height="14" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sociedad :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" mode="Opaque" backcolor="#CCCCCC" x="389" y="46" width="115" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Nsociedad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="0" y="1" width="100" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="100" y="1" width="141" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ARTICULO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="241" y="1" width="71" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[C.UNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="312" y="1" width="89" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="401" y="1" width="103" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[COSTO TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement style="table" mode="Opaque" x="241" y="0" width="71" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.text.DecimalFormat("0.00").format($F{PREQ_PRICE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="312" y="0" width="89" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Q_DESPACHADA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="401" y="0" width="103" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.text.DecimalFormat("0.00").format($F{COSTO_TOTAL})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="100" y="0" width="141" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{SHORT_TEXT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="0" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{MATERIAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="0" y="0" width="401" height="20" forecolor="#FFFFFF" backcolor="#C81414"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SUMATORIA TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="401" y="0" width="103" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[new java.text.DecimalFormat("0.00").format($V{sum_total})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

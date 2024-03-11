@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ <display-name>Portal de Proveedores</display-name>
+ <filter>
+  <filter-name>AdminFilter</filter-name>
+  <filter-class>com.servlet.AdminFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>AdminFilter</filter-name>
+  <url-pattern>/paginas/protegido/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>ERROR</dispatcher>
+ </filter-mapping>
+ <!-- <servlet>
+  <display-name>Transaccion</display-name>
+  <servlet-name>Transaccion</servlet-name>
+  <servlet-class>com.servlet.Transaccion</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet> -->
+ <servlet>
+  <display-name>Login</display-name>
+  <servlet-name>Login</servlet-name>
+  <servlet-class>com.servlet.Login</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <!-- <servlet-mapping>
+  <servlet-name>Transaccion</servlet-name>
+  <url-pattern>/paginas/protegido/despacho.jsp</url-pattern>
+ </servlet-mapping> -->
+ <servlet-mapping>
+  <servlet-name>Login</servlet-name>
+  <url-pattern>/paginas/login/VerificaLogin.jsp</url-pattern>
+ </servlet-mapping>
+ 
+  <!-- <servlet>
+  <display-name>ExportarPdf</display-name>
+  <servlet-name>ExportarPdf</servlet-name>
+  <servlet-class>com.conexion.ExportarPdf</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet> -->
+  <!-- <servlet-mapping>
+  <servlet-name>ExportarPdf</servlet-name>
+  <url-pattern>/paginas/procesos/popAdministrador/ExportarPdf.jsp</url-pattern>
+ </servlet-mapping> -->
+ </web-app>

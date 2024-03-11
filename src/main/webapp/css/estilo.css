@@ -1,0 +1,91 @@
+.titulo{
+font-family:"Arial, Verdana";
+font-size:12pt;
+font-weight:bold;
+color:#C81414}
+
+.etiqueta_formulario{
+	font-family:"Arial, Verdana";
+font-size:10pt;
+background-color:#C81414;
+color:#FFFFFF;
+font-weight: bold;}
+
+.etiqueta_formulario_1{
+	font-family:"Arial, Verdana";
+font-size:12pt;
+background-color:#C81414;
+color:#FFFFFF;
+font-weight: bold;}
+
+.detalle_formulario{
+font-family:"Calibri, Verdana";
+font-size:10pt;
+background-color:#CCCCCC;
+color:#000000}
+
+.detalle_formulario_i{
+font-family:"Calibri, Verdana";
+font-size:10pt;
+background-color:#FFFFFF;
+color:#000000}
+
+.detalle_formulario_P{
+font-family:"Arial, Verdana";
+font-size:13pt;
+background-color:#CCCCCC;
+color:#000000}
+
+.titulo_tabla{
+margin:2px;
+font-family:"Arial, Verdana";
+font-size:14pt;
+background-color:#C81414;
+color:#FFFFFF;
+font-weight: bold;}
+
+.detalle_tabla{font-family:"Arial, Verdana";
+font-size:10pt;
+background-color:#CCCCCC;
+color:#000000}
+
+.detalle_tabla_adic{font-family:"Arial, Verdana";
+font-size:8pt;
+background-color:#CCCCCC;
+color:#000000}
+
+.color_barra{SCROLLBAR-FACE-COLOR: #FFFFFF; 
+SCROLLBAR-HIGHLIGHT-COLOR: #FFFFFF; 
+SCROLLBAR-SHADOW-COLOR: #FFFFFF; 
+SCROLLBAR-3DLIGHT-COLOR: #990000; 
+SCROLLBAR-ARROW-COLOR: #990000; 
+SCROLLBAR-TRACK-COLOR: #FFFFFF; 
+SCROLLBAR-DARKSHADOW-COLOR: #990000;}
+
+.enlaces{font-family:"Arial, Verdana";
+font-size:8pt;
+color:#000099}
+
+.radio_button{font-family:"Arial, Verdana";
+font-size:"13px";
+color:#566E85}
+
+.portada{
+font-family:"Arial, Verdana";
+font-size:16pt;
+font-weight:bold;
+color:#C81414}
+
+.estilo1{font-family: "Arial, Verdana";
+font-size: 16pt;
+font-weight: bold;
+color: graytext;}
+
+#detalle_despacho {
+	overflow: scroll;
+	height: 300px;
+}
+
+#botonbuscar {
+	cursor: pointer;
+}

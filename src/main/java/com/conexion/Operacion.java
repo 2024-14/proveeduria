@@ -21,6 +21,7 @@ public class Operacion extends ConectaBase
     }
     
     public String ConsultaRUC(final String Usuario, final String Password, final String Sociedad) throws Exception {
+    	//abrir sesion
         String ls_tipo_usuario = "";
         this.lsQuery = " select id_proveedor   from SAP.SAP_USUARIO_PORTAL  where usuario = ?    and clave = ?    and sociedad = '" + Sociedad + "'" + "    and estado = 'A'";
         try {

@@ -183,6 +183,7 @@
 				</select>
 			</td>
 		</tr>
+		
 		<tr>
 			<td class="etiqueta_formulario">No. solicitud : </td>
 			<td class="detalle_formulario"><input type="text" id="solicitud" name="area" size="31"></td>
@@ -220,7 +221,7 @@
 		<td align="center" ><input type="button" value="     Exportar      " id="exportar" name="exportar"></td>
 		</tr>
 	</table>
-
+	<%sA.cerrarSesionBD(); %>
   </form>
 </body>
 </html>

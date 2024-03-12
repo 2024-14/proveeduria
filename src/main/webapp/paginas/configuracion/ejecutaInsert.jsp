@@ -32,6 +32,23 @@
 		var ruta = "../configuracion/frmPortalAdministrador.jsp";
 		$('#detalle_menu').load(ruta);
 		//window.close();
+		
+		public void cerrarSesionBD() throws Exception {
+		        try {
+		            if (this.m_conn != null) {
+		                this.m_conn.close();
+		            }
+		            if (this.m_conn_sesion != null) {
+		                this.m_conn_sesion.close();
+		            }
+		            this.m_session.setAttribute("PS_CONEXION", (Object)null);
+		        }
+		        catch (Exception e) {
+		            e.getStackTrace();
+		            e.printStackTrace();
+		            this.m_session.setAttribute("requestedPage", (Object)e.getMessage());
+		        }
+		    }
 		</script>	
 	</head>
 	<body>
@@ -42,5 +59,5 @@
 			Insertando registro ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 		</p>
 	</body>
-	
+	 <%op.cerrarSesionBD();%>
 </html>

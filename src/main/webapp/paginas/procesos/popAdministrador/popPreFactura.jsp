@@ -89,6 +89,7 @@
 	</tr>
    </table>
   </form>
+  <%sA.cerrarSesionBD();%>
    </body>
   <script type="text/javascript">
   	document.frmPreFactura.cmbProveedor.value = '<%=proveedor%>';

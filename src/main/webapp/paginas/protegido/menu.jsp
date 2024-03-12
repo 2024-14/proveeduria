@@ -13,7 +13,7 @@
 		String frm_proveedor = "../protegido/mainProveedor.jsp";
 		String url = "";
 		String param = ""; 
-		param=request.getParameter("Pparametro");	
+		param=request.getParameter("Pparametro");
 		System.out.println("ls_tipo_usuario: "+ls_tipo_usuario);
 		if (ls_tipo_usuario.equals("A") || ls_tipo_usuario.equals("G")) {
 			url = frm_admin;

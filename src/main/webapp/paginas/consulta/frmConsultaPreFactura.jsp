@@ -148,6 +148,7 @@
 	function cambiaSociedad(){
 			var proveedorNew = document.frmConsultaPreFactura.cmbProveedor.value;
 		}
+
 	
 </script>
 </head>
@@ -207,7 +208,7 @@
    		<td align="left" ><input type="button" value="    Imprimir    " id="imprimir" name="imprimir" onclick="window.print()"></td>
    </tr>
 </table>
-	
+		<%sA.cerrarSesionBD(); %>
 </form>
 </body>
 

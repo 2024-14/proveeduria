@@ -4,6 +4,7 @@
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%
 	Operacion op = new Operacion(pageContext);
+	op.cerrarSesionBD();
 	op.cerrarSesionUsuario();
 %>
 <html>
@@ -20,5 +21,6 @@
    	</script>
   </head>  
   <body onload="javascript:mensaje();">
+  
   </body>
 </html>

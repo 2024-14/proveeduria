@@ -112,6 +112,6 @@ var ruta = "<%out.print(rutas);%>";
 <br/>
 <br/>
 <br/>
-
+<%sA.cerrarSesionBD();%>
 </body>
 </html>

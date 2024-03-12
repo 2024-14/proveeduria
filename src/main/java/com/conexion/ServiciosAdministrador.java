@@ -36,6 +36,23 @@ public class ServiciosAdministrador extends ConectaBase
         super(pc);
     }
     
+    public void cerrarSesionBD() throws Exception {
+        try {
+            if (this.m_conn != null) {
+                this.m_conn.close();
+            }
+            if (this.m_conn_sesion != null) {
+                this.m_conn_sesion.close();
+            }
+            this.m_session.setAttribute("PS_CONEXION", (Object)null);
+        }
+        catch (Exception e) {
+            e.getStackTrace();
+            e.printStackTrace();
+            this.m_session.setAttribute("requestedPage", (Object)e.getMessage());
+        }
+    }
+    
     public String[] estadoAdministrador() {
         String estadosDatos = this.properties.getProperty("estados.datos");
         final int estadosLongitud = Integer.parseInt(this.properties.getProperty("estados.longitud"));

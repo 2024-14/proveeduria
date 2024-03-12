@@ -60,5 +60,5 @@ Actualizando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
     
 	//window.close();
 </script>
-
+<%sA.cerrarSesionBD(); %>
 </html>

@@ -788,7 +788,7 @@
 		<div id="oculto"></div>
 
   </form>
-
+<%sA.cerrarSesionBD();%>
 </body>
 <script type="text/javascript">
 

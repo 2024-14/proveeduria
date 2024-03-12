@@ -140,5 +140,6 @@ function myEventFunction(event,z,idx){
 			</tbody>
 		</table>
 	</form>
+	<%op.cerrarSesionBD();%>
 </body>
 </html>

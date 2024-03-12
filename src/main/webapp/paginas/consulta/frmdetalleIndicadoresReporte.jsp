@@ -153,6 +153,7 @@ color:#000000}
 				<td align="center" width=""><%=(detalleIndicador[8]==null)?"":detalleIndicador[8]%></td>
 			</tr>
 		<%}}%>
+		
 	</tbody>
 </table>
 	<%}else{ %>
@@ -161,6 +162,7 @@ color:#000000}
 		<td class="titulo" align="center">No existen datos a presentar</td>
 	</tr>
 </table>
-<%} %>
+<%} 
+	sC.cerrarSesionBD();%>
 </body>
 </html>

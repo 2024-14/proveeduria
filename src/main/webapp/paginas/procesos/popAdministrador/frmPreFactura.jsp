@@ -135,6 +135,7 @@ color:#000000}
 							}
 							%>
 						</thead>
+						
 					</table>
 				</td>
 			</tr>
@@ -154,6 +155,7 @@ color:#000000}
 			<% }%>
 		</table>
 	</form>
+	<%sA.cerrarSesionBD();%>
 </body>
 
 </html>

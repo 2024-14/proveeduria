@@ -190,8 +190,9 @@
 		e.printStackTrace();
 	}finally{
 		vBandeja.close();
-	}			
+	}
 %>
-	</form>		
+	</form>	
+	<%sA.cerrarSesionBD();%>		
 </body>
 </html>

@@ -230,7 +230,7 @@ if(CantBandejaAdmin != 0){
 				idx ++;
 				}
 	    	System.out.println("Termina For");
-				%>
+			%>
 			</tbody>
 			<tfoot >
 				<tr>
@@ -248,7 +248,7 @@ if(CantBandejaAdmin != 0){
 		</table>
 		<%}}	System.out.println("Termina todo");
 		%>
-</form>		
+</form>	
+<%sA.cerrarSesionBD();%>	
 </body>
-	
 </html>

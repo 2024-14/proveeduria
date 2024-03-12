@@ -50,6 +50,7 @@
 			top.open("../general/cerrarConexion.jsp","_self");   
 	    	
 		}
+		 
 	</script>
 	<style>
 	.estilo2{font-family: "Arial, Verdana";
@@ -104,6 +105,7 @@ color: graytext;}
 					<tr>
 						
 						<td class="estilo1" align="center" colspan="4" ><%=sA.consultaSociedad(session.getAttribute("PS_SOCIEDAD").toString())+" S.A."%></td>
+					
 					</tr>
 				</table>
 			</td>	
@@ -114,4 +116,7 @@ color: graytext;}
 	</table >		
 	
 </body>
+   <%
+	sA.cerrarSesionBD();
+    %>
 </html>

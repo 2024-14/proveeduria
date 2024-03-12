@@ -24,6 +24,7 @@
 $(document).ready(function(){
 		$("#tbMantenedorUsuarioUbicacion").tablesorter(); 
 	});	
+	
 	</script>
 </head>
 <body>
@@ -75,8 +76,9 @@ if(CantUsuarios != 0){
 		i++;
 		}
 		%>
-									
+							
 	</tbody>
+	 <%sA.cerrarSesionBD();%>
 </table>
 <%}else{ %>
 <table align="center" width="100%" cellpadding="1" cellspacing="0" >

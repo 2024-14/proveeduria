@@ -223,6 +223,7 @@
 		</table>
 		
 		</form>
+		<%sA.cerrarSesionBD();%>
 	</body>
 
 </html>

@@ -112,6 +112,7 @@
 		 <form name="frmMainProveedor"> 
 			<div id="detalle_solicitudes" class="etiqueta_formulario_1" align="left">Bandeja de Trabajo - Proveedor</div>
 			<div  id="detalleMainProveedor"></div>
-		 </form>	
+		 </form>
+		 <%sA.cerrarSesionBD();%>	
 	</body> 
 </html>

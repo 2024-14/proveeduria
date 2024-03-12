@@ -110,5 +110,6 @@
 		</table>
 		<%} %>
 		 </form>	
+		 <%op.cerrarSesionBD();%>
 	</body> 
 </html>

@@ -9,7 +9,7 @@
 <html>
 <head>
 <%
-	Operacion op = new Operacion(pageContext); 
+	Operacion op = new Operacion(pageContext);
 	String nombreSociedad = request.getSession().getAttribute("PS_SOCIEDAD").toString();
 %> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -225,6 +225,22 @@ var borrar = "N";
 		borrar = "N";
 	}
 	
+	public void cerrarSesionBD() throws Exception {
+        try {
+            if (this.m_conn != null) {
+                this.m_conn.close();
+            }
+            if (this.m_conn_sesion != null) {
+                this.m_conn_sesion.close();
+            }
+            this.m_session.setAttribute("PS_CONEXION", (Object)null);
+        }
+        catch (Exception e) {
+            e.getStackTrace();
+            e.printStackTrace();
+            this.m_session.setAttribute("requestedPage", (Object)e.getMessage());
+        }
+    }
 </script>
 </head>
 	
@@ -238,9 +254,7 @@ var borrar = "N";
 				Detalles de los usuarios
 			</div>
 			<div  id="detallePortalAdmin"></div>
-		</div>	
-    	   
-		
+		</div>
 		
 		<div align="center">
 		<table align="center">
@@ -326,7 +340,9 @@ var borrar = "N";
 		</table>
 		</div>
 		
-	</form>	
+	</form>
+	<%op.cerrarSesionBD(); %>
+	
 </body> 
 	
 </html>

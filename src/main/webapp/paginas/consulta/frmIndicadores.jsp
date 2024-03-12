@@ -213,7 +213,6 @@
 		}
 	}	
 	
-	
 </script>
 </head>
 
@@ -266,7 +265,6 @@
 				<input type="button" value="Consultar" id="consultar" name="consultar">
 				<input type="button" value=" Imprimir " id="imprimir" name="imprimir" onclick="window.print()">
 			</td>
-	
 		</tr>
 	</table>
 	</div>
@@ -350,5 +348,6 @@
 	</table>
 	</div>
   </form>
+  <%sA.cerrarSesionBD();%>
 </body>
 </html>

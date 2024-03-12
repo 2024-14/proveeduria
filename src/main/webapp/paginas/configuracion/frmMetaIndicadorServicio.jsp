@@ -426,7 +426,7 @@
 		</table>
 		</div>
 	</form>
-
+<%sA.cerrarSesionBD(); %>
 	
 </body>
 

@@ -34,6 +34,7 @@
 <p align="center">
 Eliminando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 </p>
+<% sA.cerrarSesionBD(); %>
 </body>
 <% //sA.recibirSolicitud(cadena); %>
 <script type="text/javascript">
@@ -41,10 +42,12 @@ Eliminando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 	//$(document).ready(function(){
 		var ruta = "../configuracion/frmMetaIndicadorServicio.jsp";
 	$('#detalle_menu').load(ruta);
+	
 		
 	//});
     
 	window.close();
+
 </script>
 
 </html>

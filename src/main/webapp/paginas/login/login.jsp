@@ -281,6 +281,7 @@ Proyecto: [x]-Portal de Proveeduria
 												</select>
 	                          				</td>
 	                    				</tr>
+	                    				 
 	                    				<tr > 
 					                        <td id="correoUsuario_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Correo de Usuario</td> <!-- style="display: none; -->
 					                        <td id="correoUsuario1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;"> 

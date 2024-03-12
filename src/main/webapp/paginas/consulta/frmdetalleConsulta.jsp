@@ -172,7 +172,8 @@
 				<td align="right" width="5%"><%=detalleReporte[17]%></td>	
 				<td align="right" width="5%"><%=detalleReporte[18]%></td>																																					
 			</tr>
-			<%}%>
+			<%}
+			%>
 			</tbody>
 			</table>
 		<%}else{ %>
@@ -181,7 +182,7 @@
 					<td class="titulo" align="center">No existen datos a presentar</td>
 				</tr>
 			</table>
-<%} %>
-		
+<%} 
+sC.cerrarSesionBD();%>	
 </body>
 </html>

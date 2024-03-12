@@ -930,7 +930,6 @@
 		</div>
 	</div>
   </form>
-
+<%sA.cerrarSesionBD();%>
 </body>
-
 </html>

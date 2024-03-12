@@ -22,6 +22,23 @@
 			alert("<%=resultado%>");
 			var ruta = "../configuracion/frmMantenedorUsarioUbicacion.jsp";
 			$('#detalle_menu').load(ruta);
+			
+			public void cerrarSesionBD() throws Exception {
+		        try {
+		            if (this.m_conn != null) {
+		                this.m_conn.close();
+		            }
+		            if (this.m_conn_sesion != null) {
+		                this.m_conn_sesion.close();
+		            }
+		            this.m_session.setAttribute("PS_CONEXION", (Object)null);
+		        }
+		        catch (Exception e) {
+		            e.getStackTrace();
+		            e.printStackTrace();
+		            this.m_session.setAttribute("requestedPage", (Object)e.getMessage());
+		        }
+		    }
 		</script>
 	</head>
 	<body>
@@ -32,5 +49,5 @@
 			Actualizando registro ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 		</p>	  
 	</body>
-
+ <%sA.cerrarSesionBD();%>
 </html>

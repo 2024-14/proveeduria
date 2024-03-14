@@ -49,7 +49,6 @@
 Insertando registro ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 </p>
 
-
 </body>
 <% //sA.recibirSolicitud(cadena); %>
 <script type="text/javascript">

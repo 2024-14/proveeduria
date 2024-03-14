@@ -113,6 +113,6 @@
 			<div id="detalle_solicitudes" class="etiqueta_formulario_1" align="left">Bandeja de Trabajo - Proveedor</div>
 			<div  id="detalleMainProveedor"></div>
 		 </form>
-		 <%sA.cerrarSesionBD();%>	
 	</body> 
+			 <%sA.cerrarSesionBD();%>	
 </html>

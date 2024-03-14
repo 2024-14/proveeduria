@@ -162,7 +162,7 @@ color:#000000}
 		<td class="titulo" align="center">No existen datos a presentar</td>
 	</tr>
 </table>
-<%} 
-	sC.cerrarSesionBD();%>
+<%} %>
 </body>
+		<%sC.cerrarSesionBD();%>
 </html>

@@ -216,6 +216,6 @@ for (int i = 0; i < j ; i++)
 		</td>
 	</tr>
 </table>	
-	<%sC.cerrarSesionBD();%>	
 </body>
+	<%sC.cerrarSesionBD();%>
 </html>

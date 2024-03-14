@@ -78,7 +78,6 @@ if(CantUsuarios != 0){
 		%>
 							
 	</tbody>
-	 <%sA.cerrarSesionBD();%>
 </table>
 <%}else{ %>
 <table align="center" width="100%" cellpadding="1" cellspacing="0" >
@@ -88,4 +87,5 @@ if(CantUsuarios != 0){
 </table>
 <%} %>		
 </body>
+	 <%sA.cerrarSesionBD();%>
 </html>

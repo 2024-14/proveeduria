@@ -788,7 +788,6 @@
 		<div id="oculto"></div>
 
   </form>
-<%sA.cerrarSesionBD();%>
 </body>
 <script type="text/javascript">
 
@@ -820,4 +819,5 @@
 		if(estadoND!="0"){document.frmDetOrden.estadoND.checked = true;}else{document.frmDetOrden.estadoND.checked = false;}
 
 </script>
+<%sA.cerrarSesionBD();%>
 </html>

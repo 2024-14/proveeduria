@@ -341,8 +341,6 @@ var borrar = "N";
 		</div>
 		
 	</form>
-	<%op.cerrarSesionBD(); %>
-	
 </body> 
-	
+		<%op.cerrarSesionBD(); %>
 </html>

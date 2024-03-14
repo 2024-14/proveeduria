@@ -192,7 +192,7 @@
 		vBandeja.close();
 	}
 %>
-	</form>	
-	<%sA.cerrarSesionBD();%>		
+	</form>		
 </body>
+	<%sA.cerrarSesionBD();%>	
 </html>

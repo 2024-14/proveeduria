@@ -221,7 +221,7 @@
 		<td align="center" ><input type="button" value="     Exportar      " id="exportar" name="exportar"></td>
 		</tr>
 	</table>
-	<%sA.cerrarSesionBD(); %>
   </form>
 </body>
+	<%sA.cerrarSesionBD(); %>
 </html>

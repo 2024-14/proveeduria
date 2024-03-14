@@ -51,6 +51,6 @@
 		</script>	
 	</head>
 	<body>
-	  <%op.cerrarSesionBD();%>
 	</body>
+		  <%op.cerrarSesionBD();%>
 </html>

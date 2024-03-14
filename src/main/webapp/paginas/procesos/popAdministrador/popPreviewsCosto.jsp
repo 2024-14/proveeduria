@@ -94,11 +94,11 @@
 	</tr>
    </table>
    </form>
-   <%sA.cerrarSesionBD();%>
   </body>
   <script type="text/javascript">
   	document.frmPreviewCosto.cmbProveedor.value = '<%=proveedor%>';
 </script>
+   <%sA.cerrarSesionBD();%>
 </html>
 
 

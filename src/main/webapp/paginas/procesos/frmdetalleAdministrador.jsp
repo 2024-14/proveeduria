@@ -300,6 +300,6 @@ if(CantBandejaAdmin != 0){
 		<%}}	System.out.println("Termina todo");
 		%>
 </form>	
-<%sA.cerrarSesionBD();%>	
 </body>
+<%sA.cerrarSesionBD();%>	
 </html>

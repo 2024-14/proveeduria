@@ -208,8 +208,7 @@
    		<td align="left" ><input type="button" value="    Imprimir    " id="imprimir" name="imprimir" onclick="window.print()"></td>
    </tr>
 </table>
-		<%sA.cerrarSesionBD(); %>
 </form>
 </body>
-
+		<%sA.cerrarSesionBD(); %>
 </html>

@@ -456,7 +456,6 @@ var guardar="N";
 		</div>
 		
 	</form>
-	<%sA.cerrarSesionBD(); %>
 </body>
-
+	<%sA.cerrarSesionBD(); %>
 </html>

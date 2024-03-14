@@ -155,7 +155,7 @@ color:#000000}
 			<% }%>
 		</table>
 	</form>
-	<%sA.cerrarSesionBD();%>
-</body>
 
+</body>
+	<%sA.cerrarSesionBD();%>
 </html>

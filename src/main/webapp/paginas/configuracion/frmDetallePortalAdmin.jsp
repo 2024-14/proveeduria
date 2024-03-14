@@ -121,7 +121,6 @@
 <%	i++;
 	}
 %>	
-<%sA.cerrarSesionBD();%>
 	</tbody>							
 </table>
 <%}else{ %>
@@ -132,6 +131,6 @@
 </table>
 <%}%>
 </form>
- 
 </body>
+<%sA.cerrarSesionBD();%>
 </html>

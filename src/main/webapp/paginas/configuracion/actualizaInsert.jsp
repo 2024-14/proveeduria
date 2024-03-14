@@ -36,6 +36,6 @@
 		<p align="center">
 			Actualizando registro ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 		</p>
-		<%op.cerrarSesionBD();%>
 	</body>
+			<%op.cerrarSesionBD();%>
 </html>

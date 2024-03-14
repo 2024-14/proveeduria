@@ -78,7 +78,6 @@
 <p align="center">
 Actualizando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 </p>
-<%sA.cerrarSesionBD();%>
 </body>
 <script type="text/javascript">
 	var ruta = "<%=rutas%>";
@@ -92,5 +91,5 @@ Actualizando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
     
 	//window.close();
 </script>
-
+<%sA.cerrarSesionBD();%>
 </html>

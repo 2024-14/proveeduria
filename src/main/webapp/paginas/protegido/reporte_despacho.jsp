@@ -169,6 +169,6 @@ font-weight: bold;}
 			</table>
 			<% } %>
 	</form>
-	<%op.cerrarSesionBD();%>
 </body>
+	<%op.cerrarSesionBD();%>
 </html>

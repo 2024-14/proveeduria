@@ -34,7 +34,6 @@
 <p align="center">
 Eliminando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 </p>
-<% sA.cerrarSesionBD(); %>
 </body>
 <% //sA.recibirSolicitud(cadena); %>
 <script type="text/javascript">
@@ -49,5 +48,5 @@ Eliminando ...  <img src="../../imagenes/loading (1).gif" width="15"></img>
 	window.close();
 
 </script>
-
+<% sA.cerrarSesionBD(); %>
 </html>

@@ -114,9 +114,6 @@ color: graytext;}
 			<td align="center" valign="top" colspan="2"><img src="../../imagenes/ico-roja.gif" width="750"></img></td>
 		</tr>	
 	</table >		
-	
 </body>
-   <%
-	sA.cerrarSesionBD();
-    %>
+   	<%sA.cerrarSesionBD();%>
 </html>

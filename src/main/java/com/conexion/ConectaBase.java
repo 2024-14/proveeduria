@@ -39,7 +39,7 @@ public class ConectaBase extends PropertiesPortal {
         initContext = new InitialContext();
         System.out.println("Contexto: " + initContext);
         try {
-          this.dsconxionDB = (DataSource)initContext.lookup("jdbc/proveeduriaSAPD");
+          this.dsconxionDB = (DataSource)initContext.lookup("jdbc/proveeduriaSAP");
           System.out.println("JDBC: " + this.dsconxionDB);
           this.m_conn = this.dsconxionDB.getConnection();
         } catch (Exception e) {

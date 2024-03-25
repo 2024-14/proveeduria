@@ -128,48 +128,6 @@ Proyecto: [x]-Portal de Proveeduria
 			function cambiaSociedad() {
 				var estadoNew = document.form1.cmbSociedad.value;
 	 		}
-	 		
-			function mostrarOcultarElementos() { //mostrar  
-				  
-				var sociedad= document.form1.cmbSociedad.value;
-				if (sociedad==""){
-					alert("Debe escoger Sociedad.");
-					return;
-				
-				}
-				
-				document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
-				document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
-				//document.form1.submit();
-				
-				  var elemento1 = document.getElementById("correoUsuario_td");
-				  var elemento2 = document.getElementById("correoUsuario1_td");
-				  var elemento3 = document.getElementById("correoUsuario_input");
-				  var elemento4 = document.getElementById("elemento4");
-				  var elemento5 = document.getElementById("ingresarOTP_td");
-				  var elemento6 = document.getElementById("ingresarOTP1_td");
-				  var elemento7 = document.getElementById("ingresarOTP_input");
-				 
-
-				  //if (mostrar) {
-				    elemento1.style.display = "table-cell";
-				    elemento2.style.display = "table-cell";
-				    elemento3.style.display = "table-cell";
-					elemento4.style.display = "block";
-				    elemento5.style.display = "table-cell";
-				    elemento6.style.display = "table-cell";
-				    elemento7.style.display = "table-cell";
-				  //} else {
-				    //elemento1.style.display = "none";
-				    //elemento2.style.display = "none";
-				    //elemento3.style.display = "none";
-				  //}
-				
-
-				window.onload = function() {
-				 mostrarOcultarElementos(false); // Oculta los elementos al cargar la página
-				}
-			}
 				
 			function mostrarOcultarElementos2() { //mostrar  
 				  
@@ -271,15 +229,14 @@ Proyecto: [x]-Portal de Proveeduria
 													%>	
 														<option value="<%=sociedad_u[0]%>" selected="selected"><%=sociedad_u[1]%></option>
 													<%}%> 
-													<%String band = op.Band_soc();
-													op.cerrarSesionBD();
+													<%String band = op.Band_soc();												
 													if (band.equals("N")){%>
 		                          					<option value="" selected="selected">Seleccionar Sociedad</option> 
 		                          					<%}%>
 												</select>
 	                          				</td>
 	                    				</tr>
-	                    			
+	                    			        	<%op.cerrarSesionBD();%>         			     
 	                    				<tr > 
 					                        <td id="correoUsuario_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Correo de Usuario</td> <!-- style="display: none; -->
 					                        <td id="correoUsuario1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;"> 
@@ -306,6 +263,7 @@ Proyecto: [x]-Portal de Proveeduria
       				<td valign="top" width="100" height="150"></td>    				
   				</tr>  				
 			</table>
+			
 			</form>
 			</td>
 			<td width="100" height="150">&nbsp;</td>

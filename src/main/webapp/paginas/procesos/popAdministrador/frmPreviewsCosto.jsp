@@ -133,7 +133,6 @@ function ok() {
 							</tr>
 							<%}%>
 						</thead>
-						<%sA.cerrarSesionBD();%>
 					</table>
 				</td>
 			</tr>

@@ -48,8 +48,6 @@ respuesta=sA.generaPedidoSap(contrato);
 <div align="center">
 	<input type="button" value="Detalle" class="detalleSap" id="detalleSap" name="detalleSap"/>
 </div>
-
-<%sA.cerrarSesionBD();%>
-
 </body>
+<%sA.cerrarSesionBD();%>
 </html>

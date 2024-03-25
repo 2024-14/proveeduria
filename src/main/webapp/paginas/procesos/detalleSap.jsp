@@ -103,6 +103,6 @@ color:#000000}
 %>
 </table>	
 </div>
-<%sC.cerrarSesionBD();%>
 </body>
+<%sC.cerrarSesionBD();%>
 </html>

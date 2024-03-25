@@ -217,8 +217,6 @@ Proyecto: [x]-Portal de Proveeduria
 				 mostrarOcultarElementos2(false); // Oculta los elementos al cargar la página
 				}
 			}
-			
-		System.out.println(mostrarOcultarElementos2)
 	</script>
 </head>
 <body onload="javascript:inicializar();">
@@ -281,11 +279,11 @@ Proyecto: [x]-Portal de Proveeduria
 												</select>
 	                          				</td>
 	                    				</tr>
-	                    				 
+	                    			
 	                    				<tr > 
 					                        <td id="correoUsuario_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Correo de Usuario</td> <!-- style="display: none; -->
 					                        <td id="correoUsuario1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;"> 
-					                        	<input id="correoUsuario_input" name="txtOtp" type="text" class="LowerCase" value="" maxlength="25" style="display: none;" placeholder="sudamericana@sasf.com"> 
+					                        	<input id="correoUsuario_input" name="txtOtp" type="text" class="LowerCase" value="" maxlength="25" style="display: none;" placeholder="sudamericana@sasf.com" disabled> 
 				                     			<button id="elemento4" style="display: none;" onclick="mostrarOcultarElementos(true);"> Enviar código </button> <!-- onclick="mostrarOcultarElementos(true) -->
 				                     	</tr>
 	                    				<tr > 
@@ -295,7 +293,7 @@ Proyecto: [x]-Portal de Proveeduria
 				                     			
 				                     	</tr>
 	                    				<tr>
-	                        				<td width="150"><center><a href="#" onclick="ok();">
+	                        				<td width="150"><center><a href="#" onclick="mostrarOcultarElementos2();">
 	            			  					<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44"/></a></center></td>
 		                        			<td width="150"><center><a href="#" onclick="cerrar();">
 				              					<img src="../../imagenes/btncancelar1.gif" name="Image1481111" border="0" height="48" width="44"/></a></center></td>

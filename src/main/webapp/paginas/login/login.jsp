@@ -24,7 +24,7 @@ Fecha: 12/05/2015
 Comentario: JSP que realiza validaciones del login
 Proyecto: [x]-Portal de Proveeduria
 -->
-<%     
+<%      
 	JspFactory jspFactory = JspFactory.getDefaultFactory();
 	PageContext pContext = jspFactory.getPageContext(this, request, response, null,true, 0, true);
 
@@ -141,22 +141,16 @@ Proyecto: [x]-Portal de Proveeduria
 				document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
 				document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
 				//document.form1.submit();
-				
-				  var elemento1 = document.getElementById("correoUsuario_td");
-				  var elemento2 = document.getElementById("correoUsuario1_td");
-				  var elemento3 = document.getElementById("correoUsuario_input");
-				  var elemento4 = document.getElementById("elemento4");
+								
 				  var elemento5 = document.getElementById("ingresarOTP_td");
 				  var elemento6 = document.getElementById("ingresarOTP1_td");
 				  var elemento7 = document.getElementById("ingresarOTP_input");
-				 
-				    elemento1.style.display = "table-cell";
-				    elemento2.style.display = "table-cell";
-				    elemento3.style.display = "table-cell";
-					elemento4.style.display = "block";
+				  var elemento8 = document.getElementById("elemento8");
+				  			   
 				    elemento5.style.display = "table-cell";
 				    elemento6.style.display = "table-cell";
-				    elemento7.style.display = "table-cell";    
+				    elemento7.style.display = "table-cell"; 
+				    elemento8.style.display = "block";
 
 			 //if ((mostrar)== false) {
 				 //elemento1.style.display = "none";
@@ -170,7 +164,6 @@ Proyecto: [x]-Portal de Proveeduria
 				//	     ventanaError();
 				  //}
 				
-
 				window.onload = function() {
 				 mostrarOcultarElementos2(false); // Oculta los elementos al cargar la página
 				}
@@ -236,18 +229,12 @@ Proyecto: [x]-Portal de Proveeduria
 												</select>
 	                          				</td>
 	                    				</tr>
-	                    			        	<%op.cerrarSesionBD();%>         			     
-	                    				<tr > 
-					                        <td id="correoUsuario_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Correo de Usuario</td> <!-- style="display: none; -->
-					                        <td id="correoUsuario1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;"> 
-					                        	<input id="correoUsuario_input" name="txtOtp" type="text" class="LowerCase" value="" maxlength="25" style="display: none;" placeholder="sudamericana@sasf.com" disabled> 
-				                     			<button id="elemento4" style="display: none;" onclick="mostrarOcultarElementos(true);"> Enviar código </button> <!-- onclick="mostrarOcultarElementos(true) -->
-				                     	</tr>
+	                    			        	<%op.cerrarSesionBD();%>         			                 			
 	                    				<tr > 
 					                        <td id="ingresarOTP_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Ingresar código OTP:</td>
 					                        <td id="ingresarOTP1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;">
 					                        	<input id="ingresarOTP_input" name="txtOtp" type="text" class="uppercase" value="" maxlength="25" style="display: none;">
-				                     			
+				                     			<button id="elemento8" style="display: none;" onclick="mostrarOcultarElementos(true);"> Validar Código </button>
 				                     	</tr>
 	                    				<tr>
 	                        				<td width="150"><center><a href="#" onclick="mostrarOcultarElementos2();">

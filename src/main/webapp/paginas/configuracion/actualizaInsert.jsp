@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
 "http://www.w3.org/TR/html4/transitional.dtd">
 <html lang="es">
-<%
+<% 
 	JspFactory jspFactory = JspFactory.getDefaultFactory();
 	PageContext pContext = jspFactory.getPageContext(this, request, response, null,true, 0, true);
 	String setId = request.getParameter("pSetId");

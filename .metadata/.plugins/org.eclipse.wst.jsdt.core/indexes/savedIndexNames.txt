@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\proveeduria\proveeduria\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+227931714.index
+3629630208.index
+2725183901.index
+1926614670.index
+624700969.index
+3485745472.index

@@ -165,9 +165,62 @@ Proyecto: [x]-Portal de Proveeduria
 				  //}
 				
 				window.onload = function() {
+			     document.getElementById("elemento8").disabled = true;
+			     ingresarOTP_input.value = "";
 				 mostrarOcultarElementos2(false); // Oculta los elementos al cargar la página
 				}
 			}
+			
+			function validarOTP(ingresarOTP_input) {
+				  // Valida que solo se introduzcan números
+				  const regex = /^\d+$/;
+				  if (!regex.test(ingresarOTP_input.value)) {
+				    // Mostrar mensaje de error
+				    alert("Solo se permiten números");
+				    // Limpiar el valor del input
+				    ingresarOTP_input.value = "";
+				    return false;
+				  }
+				  // Valida que la longitud sea menor o igual a 6
+				  if (ingresarOTP_input.value.length > 6) {
+				    // Mostrar mensaje de error
+				    alert("El máximo de caracteres es 6");
+				    // Limpiar el valor del input
+				    ingresarOTP_input.value = ingresarOTP_input.value.substring(0, 6);
+				    return false;
+				  }
+				  return true;
+				}
+			
+			function valideKey(evt){	
+				// El código es la representación decimal ASCII de la tecla presionada.
+				var code = (evt.which) ? evt.which : evt.keyCode;
+				
+				if(code==8) { // retroceso.
+				  return true;
+				} else if(code>=48 && code<=57) { // is a number.
+				  return true;
+				} else{ // other keys.
+				  return false;
+				}
+			}
+			
+			function validarBoton() {
+				  var input = document.getElementById("ingresarOTP_input");
+				  var button = document.getElementById("elemento8");
+
+				  // Verifica si el input tiene 6 números
+				    if (input.value.length === 6) {
+				    	 //button.disabled = false;
+				        document.getElementById("elemento8").disabled = false;
+				  } else {
+				    // Deshabilita el botón
+					  document.getElementById("elemento8").disabled = true;
+					  //button.disabled = true;
+				  }
+				}
+
+			
 	</script>
 </head>
 <body onload="javascript:inicializar();">
@@ -233,8 +286,8 @@ Proyecto: [x]-Portal de Proveeduria
 	                    				<tr > 
 					                        <td id="ingresarOTP_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Ingresar código OTP:</td>
 					                        <td id="ingresarOTP1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;">
-					                        	<input id="ingresarOTP_input" name="txtOtp" type="text" class="uppercase" value="" maxlength="25" style="display: none;">
-				                     			<button id="elemento8" style="display: none;" onclick="mostrarOcultarElementos(true);"> Validar Código </button>
+					                        	<input id="ingresarOTP_input" name="txtOtp" type="text"  pattern="[0-9]+ class="uppercase" value="" maxlength="6" style="display: none;" onkeyup="validarOTP(this)" onkeypress="return valideKey(event); validarBoton();">
+				                     			<input id="elemento8" type="submit" name="btnValidar" style="display: none;" value=" Validar Código"  onclick="this.disabled = true">
 				                     	</tr>
 	                    				<tr>
 	                        				<td width="150"><center><a href="#" onclick="mostrarOcultarElementos2();">

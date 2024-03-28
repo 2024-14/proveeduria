@@ -163,34 +163,17 @@ Proyecto: [x]-Portal de Proveeduria
 			// } else {
 				//	     ventanaError();
 				  //}
+			 
+				 document.getElementById("btnaceptar").hidden = true;
 				
 				window.onload = function() {
-			     document.getElementById("elemento8").disabled = true;
+			     document.getElementById("elemento8").disabled = disabled;
 			     ingresarOTP_input.value = "";
 				 mostrarOcultarElementos2(false); // Oculta los elementos al cargar la página
 				}
 			}
 			
-			function validarOTP(ingresarOTP_input) {
-				  // Valida que solo se introduzcan números
-				  const regex = /^\d+$/;
-				  if (!regex.test(ingresarOTP_input.value)) {
-				    // Mostrar mensaje de error
-				    alert("Solo se permiten números");
-				    // Limpiar el valor del input
-				    ingresarOTP_input.value = "";
-				    return false;
-				  }
-				  // Valida que la longitud sea menor o igual a 6
-				  if (ingresarOTP_input.value.length > 6) {
-				    // Mostrar mensaje de error
-				    alert("El máximo de caracteres es 6");
-				    // Limpiar el valor del input
-				    ingresarOTP_input.value = ingresarOTP_input.value.substring(0, 6);
-				    return false;
-				  }
-				  return true;
-				}
+			
 			
 			function valideKey(evt){	
 				// El código es la representación decimal ASCII de la tecla presionada.
@@ -201,6 +184,7 @@ Proyecto: [x]-Portal de Proveeduria
 				} else if(code>=48 && code<=57) { // is a number.
 				  return true;
 				} else{ // other keys.
+					 alert("Solo se permiten números");
 				  return false;
 				}
 			}
@@ -213,11 +197,11 @@ Proyecto: [x]-Portal de Proveeduria
 				    if (input.value.length === 6) {
 				    	 //button.disabled = false;
 				        document.getElementById("elemento8").disabled = false;
-				  } else {
-				    // Deshabilita el botón
-					  document.getElementById("elemento8").disabled = true;
-					  //button.disabled = true;
+				  } else{
+				    	 //button.disabled = false;
+				        document.getElementById("elemento8").disabled = true;
 				  }
+				 
 				}
 
 			
@@ -286,12 +270,14 @@ Proyecto: [x]-Portal de Proveeduria
 	                    				<tr > 
 					                        <td id="ingresarOTP_td" class="etiqueta_formulario" width="10" height="10" align="right" style="display: none;"> Ingresar código OTP:</td>
 					                        <td id="ingresarOTP1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;">
-					                        	<input id="ingresarOTP_input" name="txtOtp" type="text"  pattern="[0-9]+ class="uppercase" value="" maxlength="6" style="display: none;" onkeyup="validarOTP(this)" onkeypress="return valideKey(event); validarBoton();">
-				                     			<input id="elemento8" type="submit" name="btnValidar" style="display: none;" value=" Validar Código"  onclick="this.disabled = true">
+					                        	<input style="margin-top:10px;" id="ingresarOTP_input" name="txtOtp" type="text"  pattern="[0-9]+" class="uppercase" value="" maxlength="6" style="display: none;" onkeyup="validarBoton()" onkeypress="return valideKey(event); ">
+				                     		     <br />
+				                     			<button style="margin-top:10px; margin-bottom:10px; " id="elemento8" type="submit" name="btnValidar" style="display: none;"  onclick="validarBoton();" disabled>Validar Código</button>
+				                     			</td>
 				                     	</tr>
 	                    				<tr>
-	                        				<td width="150"><center><a href="#" onclick="mostrarOcultarElementos2();">
-	            			  					<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44"/></a></center></td>
+	                        				<td width="150" ><center><a href="#" id="btnaceptar" onclick="mostrarOcultarElementos2();"  >
+	            			  					<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44" /></a></center></td>
 		                        			<td width="150"><center><a href="#" onclick="cerrar();">
 				              					<img src="../../imagenes/btncancelar1.gif" name="Image1481111" border="0" height="48" width="44"/></a></center></td>
 	                   					</tr>

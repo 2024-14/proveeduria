@@ -95,10 +95,11 @@ public class Login extends HttpServlet
                 this.session.setAttribute("USUARIO", (Object)ls_usuario);
                 this.session.setAttribute("PASS", (Object)ls_contrasena);
                 this.session.setAttribute("SOCIEDAD", (Object)ls_sociedad);
-                Login.rd = request.getRequestDispatcher("../protegido/frmMain.jsp"); //"../protegido/frmMain.jsp"
+                //Login.rd = request.getRequestDispatcher("../protegido/frmMain.jsp"); //"../protegido/frmMain.jsp"
+                Login.rd = request.getRequestDispatcher("../login/login.jsp?pv_validarpin=S");
             } 
             else {
-                Login.rd = request.getRequestDispatcher("../login/login.jsp");
+                Login.rd = request.getRequestDispatcher("../login/login.jsp?pv_validarpin=N");
             }
             Login.rd.forward((ServletRequest)request, (ServletResponse)response);
         }

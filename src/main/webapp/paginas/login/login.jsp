@@ -166,11 +166,9 @@ Proyecto: [x]-Portal de Proveeduria
 			 
 				 document.getElementById("btnaceptar").hidden = true;
 				
-				window.onload = function() {
-			     document.getElementById("elemento8").disabled = disabled;
+				
 			     ingresarOTP_input.value = "";
-				 mostrarOcultarElementos2(false); // Oculta los elementos al cargar la página
-				}
+				
 			}
 			
 			
@@ -276,7 +274,7 @@ Proyecto: [x]-Portal de Proveeduria
 				                     			</td>
 				                     	</tr>
 	                    				<tr>
-	                        				<td width="150" ><center><a href="#" id="btnaceptar" onclick="mostrarOcultarElementos2();"  >
+	                        				<td width="150" ><center><a href="#" id="btnaceptar" onclick="ok();"  >
 	            			  					<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44" /></a></center></td>
 		                        			<td width="150"><center><a href="#" onclick="cerrar();">
 				              					<img src="../../imagenes/btncancelar1.gif" name="Image1481111" border="0" height="48" width="44"/></a></center></td>

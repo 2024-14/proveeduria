@@ -31,6 +31,7 @@ Proyecto: [x]-Portal de Proveeduria
 	String error="";
 	String logon="";
 	String conn="";
+	String correo = "";
 	
 	/*try{
 		conn = request.getSession().getAttribute("PS_CONEXION").toString();
@@ -42,6 +43,7 @@ Proyecto: [x]-Portal de Proveeduria
 	
 	try{
 		logon=request.getSession().getAttribute("AUTH").toString();
+		correo=request.getSession().getAttribute("CORREO").toString();
 	 	System.out.println("Logoneado? "+logon);
 	}catch(Exception e){
 		logon="false";
@@ -66,9 +68,19 @@ Proyecto: [x]-Portal de Proveeduria
 			}
 			
 			if("<%=logon%>" == "true"){
-				//alert("ya esta logoneado");
-				window.open("../protegido/frmMain.jsp",target="_self");
+			 	var correos = "<%=correo%>";
+				alert("ya esta logueado");
+				alert(correos);
+				mostrarOcultarElementos2();
+				
+				//window.open("../protegido/frmMain.jsp",target="_self");
 			}
+			
+			
+			
+			
+			
+			
 			top.window.moveTo(0,0);
 			if (document.all)
 			{
@@ -140,17 +152,20 @@ Proyecto: [x]-Portal de Proveeduria
 				
 				document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
 				document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
-				//document.form1.submit();
+				document.form1.submit();
+				
 								
 				  var elemento5 = document.getElementById("ingresarOTP_td");
 				  var elemento6 = document.getElementById("ingresarOTP1_td");
 				  var elemento7 = document.getElementById("ingresarOTP_input");
 				  var elemento8 = document.getElementById("elemento8");
-				  			   
+				  var elemento9 = document.getElementById("elemento9");
+	  			   
 				    elemento5.style.display = "table-cell";
 				    elemento6.style.display = "table-cell";
 				    elemento7.style.display = "table-cell"; 
 				    elemento8.style.display = "block";
+				    elemento9.style.display = "block";
 
 			 //if ((mostrar)== false) {
 				 //elemento1.style.display = "none";
@@ -165,7 +180,7 @@ Proyecto: [x]-Portal de Proveeduria
 				  //}
 			 
 				 document.getElementById("btnaceptar").hidden = true;
-				
+				 //document.getElementById("btnReenviar").hidden = true;
 				
 			     ingresarOTP_input.value = "";
 				
@@ -199,7 +214,7 @@ Proyecto: [x]-Portal de Proveeduria
 				    	 //button.disabled = false;
 				        document.getElementById("elemento8").disabled = true;
 				  }
-				 
+				    document.form1.submit();
 				}
 
 			
@@ -272,9 +287,14 @@ Proyecto: [x]-Portal de Proveeduria
 				                     		     <br />
 				                     			<button style="margin-top:10px; margin-bottom:10px; " id="elemento8" type="submit" name="btnValidar" style="display: none;"  onclick="validarBoton();" disabled>Validar Código</button>
 				                     			</td>
+				                     			<td>
+				                     	         <button style="margin-top:10px; margin-bottom:10px; " id="elemento9" type="submit" name="btnReenviar" style="display: none;" disabled >Reenviar Código</button>
+	                    				        </td>
 				                     	</tr>
+				                     					                    
 	                    				<tr>
-	                        				<td width="150" ><center><a href="#" id="btnaceptar" onclick="ok();"  >
+	                    				
+	                        				<td width="150" ><center><a href="#" id="btnaceptar" onclick="mostrarOcultarElementos2();"  >
 	            			  					<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44" /></a></center></td>
 		                        			<td width="150"><center><a href="#" onclick="cerrar();">
 				              					<img src="../../imagenes/btncancelar1.gif" name="Image1481111" border="0" height="48" width="44"/></a></center></td>

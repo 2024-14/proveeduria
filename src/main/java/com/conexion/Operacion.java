@@ -107,9 +107,10 @@ public class Operacion extends ConectaBase
         return ls_tipo_usuario;
     }
     
+    
     public String consularSociedad(final String sociedad) {
         String ls_sociedad = sociedad;
-        this.lsQuery = " select a.nombre_empresa    from SAP.SAP_SOCIEDAD a   where a.codigo_soc_sap_ii = ? ";
+        this.lsQuery = " select a.nombre_empresa from SAP.SAP_SOCIEDAD a   where a.codigo_soc_sap_ii = ? ";
         try {
             (this.pst = this.m_conn.prepareStatement(this.lsQuery)).setString(1, sociedad);
             this.rs = this.pst.executeQuery();

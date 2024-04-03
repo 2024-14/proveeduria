@@ -10,7 +10,7 @@
 
 # Archivos de compilación y ejecución
 *.class
-*.jar
+
 
 # Directorio de logs y temporales
 /logs/

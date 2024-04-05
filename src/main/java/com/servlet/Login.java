@@ -46,6 +46,7 @@ public class Login extends HttpServlet
         super.init(config);
     }
     
+    
     public void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, 
     IOException {
         final String lsFecha = this.ldFormat.format(this.ldFecha).toString();
@@ -60,6 +61,22 @@ public class Login extends HttpServlet
             e2.printStackTrace();
         }
     }
+    
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    		throws IOException{
+    	/*final String lsFecha = this.ldFormat.format(this.ldFecha).toString();
+        (this.session = request.getSession(true)).setAttribute("DATE", (Object)lsFecha);
+        try {
+            this.verificaLogin(request, response);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        catch (Throwable e2) {
+            e2.printStackTrace();
+        }	*/
+    		}	
+    
     
     public void verificaLogin(final HttpServletRequest request, final HttpServletResponse response) 
     		throws Throwable, Exception {
@@ -109,35 +126,27 @@ public class Login extends HttpServlet
                 this.session.setAttribute("SOCIEDAD", (Object)ls_sociedad);
                 //Login.rd = request.getRequestDispatcher("../protegido/frmMain.jsp"); //"../protegido/frmMain.jsp"
                 
-                
-             // Llamada al procedimiento almacenado
-                CallableStatement cst = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO (?,?,?,?)}");
-                cst.setString(1, ls_usuario);
-                
-                // Definimos los tipos de los parametros de salida del procedimiento almacenado
-                cst.registerOutParameter(2, java.sql.Types.VARCHAR);
-                cst.registerOutParameter(3, java.sql.Types.INTEGER);
-                cst.registerOutParameter(4, java.sql.Types.VARCHAR);
-                
-                // Ejecuta el procedimiento almacenado
-                cst.executeQuery();
-                
-                // Se obtienen la salida del procedimineto almacenado
-                ls_correo = cst.getString(2);
-                lnErrorSP = cst.getInt(3);
-                lsErrorSP = cst.getString(4);
-                
-                /*if(lnErrorSP != 0) {
-     
-                 }else {
-                	 Login.rd = request.getRequestDispatcher("../login/login.jsp?pv_validarpin=S");
-                 }*/
                
-             
-                
                 //verificar codigo OTP
                 
                 if(!ls_codigo.trim().isEmpty()) {
+                	
+                	//CREAR EL PROCEDURE PARA SOLO LLENAR EL CORREO, EL CORREO DEBES GRABARLO EN ls_correo
+                	// Llamada al procedimiento almacenado
+                    CallableStatement cst = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO2 (?,?,?,?)}");
+                    cst.setString(1, ls_usuario);
+                    
+                    // Definimos los tipos de los parametros de salida del procedimiento almacenado
+                    cst.registerOutParameter(2, java.sql.Types.VARCHAR);
+                    cst.registerOutParameter(3, java.sql.Types.INTEGER);
+                    cst.registerOutParameter(4, java.sql.Types.VARCHAR);
+                    
+                    // Ejecuta el procedimiento almacenado
+                    cst.executeQuery();
+                    
+                    // Se obtienen la salida del procedimineto almacenado
+                    ls_correo = cst.getString(2);
+                   
                 	
                 	// Llamada al procedimiento almacenado
                     CallableStatement cst_validarfinal = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_CONSULTAR_CODIGO_OTP (?,?,?,?,?)}");
@@ -156,7 +165,7 @@ public class Login extends HttpServlet
                     lsErrorSP = cst_validarfinal.getString(5);
                     
                     if(lnErrorSP == 1) {
-                      	 this.session.setAttribute("AUTH", (Object)"false");
+                      	   this.session.setAttribute("AUTH", (Object)"false");
                            this.session.setAttribute("ERROR", (Object)lsErrorSP);
                            (Login.rd = request.getRequestDispatcher("../general/error.jsp")).forward((ServletRequest)request, (ServletResponse)response);
                       }else {
@@ -167,7 +176,7 @@ public class Login extends HttpServlet
                 }else {
                 	
                 	// Llamada al procedimiento almacenado
-                    CallableStatement cst_codigo = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_GENERA_CODIGO_OTP (?,?,?,?)}");
+                  /*  CallableStatement cst_codigo = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_GENERA_CODIGO_OTP (?,?,?,?)}");
                     cst_codigo.setString(1, ls_usuario);
                     cst_codigo.setString(2, ls_correo);
                     
@@ -176,23 +185,50 @@ public class Login extends HttpServlet
                     cst_codigo.registerOutParameter(4, java.sql.Types.VARCHAR);
                     
                     // Ejecuta el procedimiento almacenado
-                    cst_codigo.execute();
+                    cst_codigo.execute();*/
                     
+                	
+                	// Llamada al procedimiento almacenado
+                    CallableStatement cst = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO (?,?,?,?)}");
+                    cst.setString(1, ls_usuario);
+                    
+                    // Definimos los tipos de los parametros de salida del procedimiento almacenado
+                    cst.registerOutParameter(2, java.sql.Types.VARCHAR);
+                    cst.registerOutParameter(3, java.sql.Types.INTEGER);
+                    cst.registerOutParameter(4, java.sql.Types.VARCHAR);
+                    
+                    // Ejecuta el procedimiento almacenado
+                    cst.executeQuery();
+                    
+                    // Se obtienen la salida del procedimineto almacenado
+                    ls_correo = cst.getString(2);
+                    lnErrorSP = cst.getInt(3);
+                    lsErrorSP = cst.getString(4);
+                    
+                    /*if(lnErrorSP != 0) {
+         
+                     }else {
+                    	 Login.rd = request.getRequestDispatcher("../login/login.jsp?pv_validarpin=S");
+                     }*/
+                  
+                	
                 	 
                 	if(lnErrorSP == 1) {
-                   	 this.session.setAttribute("AUTH", (Object)"false");
+                		
+                   	    this.session.setAttribute("AUTH", (Object)"false");
                         this.session.setAttribute("ERROR", (Object)lsErrorSP);
+                        this.session.setAttribute("MOSTRAR_BTN_REENVIAR", (Object)"true"); 
                         (Login.rd = request.getRequestDispatcher("../general/error.jsp")).forward((ServletRequest)request, (ServletResponse)response);
-                   }else {
+                    }else {
                    	this.session.setAttribute("CORREO", (Object)ls_correo);
-                   	 Login.rd = request.getRequestDispatcher("../login/login.jsp?pv_validarpin=S");	
+                   	 Login.rd = request.getRequestDispatcher("../login/login.jsp");	
                    }
                 }
                    
                
             } 
             else {
-                Login.rd = request.getRequestDispatcher("../login/login.jsp?pv_validarpin=N");
+                Login.rd = request.getRequestDispatcher("../login/login.jsp");
             }
             Login.rd.forward((ServletRequest)request, (ServletResponse)response);
         }

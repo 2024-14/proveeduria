@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xmlns:lang="es">
+
 <!--
 Creado por: CLS Viviana Estupiñan
 Fecha: 13/06/2012
@@ -55,6 +56,8 @@ Proyecto: [x]-Portal de Proveeduria
 	<head>
  		<title>Portal&nbsp;de&nbsp;Proveedores</title>
  		<link href="../../css/estilo.css" rel="stylesheet"></link>
+ 		<script src="jquery-3.7.1.min.js"> </script>
+ 		
  		<style>
 			input.uppercase{
 			text-transform: uppercase;
@@ -66,18 +69,6 @@ Proyecto: [x]-Portal de Proveeduria
 				alert("No hay Conexion!!");
 				window.open("../general/error.jsp",target="_self");
 			}
-			
-			if("<%=logon%>" == "true"){
-			 	var correos = "<%=correo%>";
-				alert("ya esta logueado");
-				alert(correos);
-				mostrarOcultarElementos2();
-				
-				//window.open("../protegido/frmMain.jsp",target="_self");
-			}
-			
-			
-			
 			
 			
 			
@@ -102,6 +93,7 @@ Proyecto: [x]-Portal de Proveeduria
 			function inicializar(){
 				ventanaError();
 				document.form1.txtUser.focus();
+				revisar_logon();
 			}
 			
 			function ventanaError(){
@@ -152,7 +144,7 @@ Proyecto: [x]-Portal de Proveeduria
 				
 				document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
 				document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
-				document.form1.submit();
+				//document.form1.submit();
 				
 								
 				  var elemento5 = document.getElementById("ingresarOTP_td");
@@ -180,11 +172,12 @@ Proyecto: [x]-Portal de Proveeduria
 				  //}
 			 
 				 document.getElementById("btnaceptar").hidden = true;
-				 //document.getElementById("btnReenviar").hidden = true;
+				 //document.getElementById("btnReenviar").hidden;
 				
 			     ingresarOTP_input.value = "";
 				
 			}
+			
 			
 			
 			
@@ -206,6 +199,7 @@ Proyecto: [x]-Portal de Proveeduria
 				  var input = document.getElementById("ingresarOTP_input");
 				  var button = document.getElementById("elemento8");
 
+				  
 				  // Verifica si el input tiene 6 números
 				    if (input.value.length === 6) {
 				    	 //button.disabled = false;
@@ -214,13 +208,59 @@ Proyecto: [x]-Portal de Proveeduria
 				    	 //button.disabled = false;
 				        document.getElementById("elemento8").disabled = true;
 				  }
-				    document.form1.submit();
-				}
-
+				    //document.form1.submit();
+			}
 			
+			
+			
+			function holas(){
+				var h = $("#txtUser").val();
+				alert(h);
+			}
+			
+			
+			function validarBoton2(){
+				 
+				    var ls_usuario = $("#txtUser").val(); // Reemplace con su lógica para obtener valor para el usuario
+				    var ls_correo = $("#txtCorreo").val(); // Reemplace con su lógica para obtener valor de correo 
+				    var ls_codigo = $("#txtPass").val(); // Obtener código del valor de entrada
+				   
+				    console.log(ls_correo);
+
+				    $.ajax({
+				      url: "RevisarCodigo.jsp", // Reemplace con la URL de su servlet
+				      type: "POST",
+				      data: {
+				        usuario: ls_usuario,
+				        correo: ls_correo,
+				        codigo: ls_codigo,
+				        //procedimiento: "SAP.SAP_PORTAL_PROV.SWP_CONSULTAR_CODIGO_OTP"
+				      },
+				      success: function(respuesta) {
+				        // Respuesta del proceso del servlet
+				        if (respuesta.resultado === "success") {
+				          // Redirigir a página protegida
+							alert("entro a la pagina");
+//				          window.location.href = "../protegido/frmMain.jsp";
+				        } else {
+				          // Mostrar mensaje de error
+							alert("entro a la pagina de error");
+				          alert("Error: " + respuesta.error);
+				        }
+				        //button.clicked = false; // Botón de reinicio hecho clic en la bandera para el próximo uso
+				      },
+				      error: function(error) {
+				        console.error("Error calling stored procedure:", error);
+				      }
+				    });
+				  
+				}
+			
+
+				
 	</script>
 </head>
-<body onload="javascript:inicializar();">
+<body onload="javascript:inicializar();"> 
 	<table width="30%" align="center" cellpadding="0" cellspacing="0" border="0">
   		<tr>
   			<td width="100" height="100"><div style="width: 100;height: 100"></div></td>
@@ -250,12 +290,14 @@ Proyecto: [x]-Portal de Proveeduria
 				                    	<tr > 
 					                        <td class="etiqueta_formulario" width="10" height="10" align="right">Usuario:</td>
 					                        <td width="150" class="etiqueta_formulario" height="30" align="center">
-					                        	<input name="txtUser" type="text" class="uppercase" value="" maxlength="25"/></td>
+					                        	<input id="txtUser" name="txtUser" type="text" class="uppercase" value="" maxlength="25"/></td>
+					                        	
+					                        	<input id="txtCorreo" name="txtCorreo" type="hidden" />
 				                     	</tr>
 	                     				<tr> 
 	                        				<td class="etiqueta_formulario" width="50" align="right" height="10">Clave:</td> 
 	                        				<td  height="30" width="150" class="etiqueta_formulario" align="center"> 
-		                          				<input name="txtPassword" type="password" class="uppercase" maxlength="40"/>
+		                          				<input id="txtPass" name="txtPassword" type="password" class="uppercase" maxlength="40"/>
 	                          				</td>
 	                    				</tr>
 	                    				<tr> 
@@ -285,19 +327,34 @@ Proyecto: [x]-Portal de Proveeduria
 					                        <td id="ingresarOTP1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;">
 					                        	<input style="margin-top:10px;" id="ingresarOTP_input" name="txtOtp" type="text"  pattern="[0-9]+" class="uppercase" value="" maxlength="6" style="display: none;" onkeyup="validarBoton()" onkeypress="return valideKey(event); ">
 				                     		     <br />
-				                     			<button style="margin-top:10px; margin-bottom:10px; " id="elemento8" type="submit" name="btnValidar" style="display: none;"  onclick="validarBoton();" disabled>Validar Código</button>
+				                     			<button style="margin-top:10px; margin-bottom:10px; " id="elemento8" type="button"  name="btnValidar" style="display: none;"  onclick="validarBoton2();" disabled>Validar Código</button>			              
 				                     			</td>
-				                     			<td>
-				                     	         <button style="margin-top:10px; margin-bottom:10px; " id="elemento9" type="submit" name="btnReenviar" style="display: none;" disabled >Reenviar Código</button>
-	                    				        </td>
+
 				                     	</tr>
 				                     					                    
 	                    				<tr>
 	                    				
-	                        				<td width="150" ><center><a href="#" id="btnaceptar" onclick="mostrarOcultarElementos2();"  >
-	            			  					<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44" /></a></center></td>
+	                        				<td width="150" ><center>
+	                        					<a href="#" id="btnaceptar" onclick="ok();"> 
+	            			  						<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44" />
+	            			  					</a>
+	            			  					
+	            			  					<a href="#" id="btnReenviar" onclick="holas();" hidden>
+				              						<img src="../../imagenes/btnReenviar.jpg" name="Image15000" border="0" height="44" width="44" />
+				              					</a>
+	            			  					
+	            			  					
+	            			  					</center>
+	            			  				</td>		                  			
+		                        			   
 		                        			<td width="150"><center><a href="#" onclick="cerrar();">
 				              					<img src="../../imagenes/btncancelar1.gif" name="Image1481111" border="0" height="48" width="44"/></a></center></td>
+	                   					    
+	                   					</tr>                   			
+	                   					<tr>
+	                   					
+	                   					<td width="150" style="margin-top:15px;" id="" ><center><a href="#" id="btnReenviar">
+				              					<img src="../../imagenes/btnReenviar.jpg" name="Image15000" border="0" height="50" width="50" style="display: none;"/></a></center></td>
 	                   					</tr>
 	                  				</table>
 	                			</td>	                			
@@ -318,7 +375,73 @@ Proyecto: [x]-Portal de Proveeduria
 			<td valign="middle" width="100" height="100"><img src="../../imagenes/LOGO_CLARO.JPG" width="90" height="80"></img></td>
 		</tr>
 	</table>
+	
+	<script type="text/javascript">
+	
+	
+ 	function revisar_logon(){
+ 		if("<%=logon%>" == "true"){ 
+ 			 
+ 			//alert("ya esta logueado");
+ 			//alert(correos);
+ 			//mostrarOcultarElementos2();
+ 			
+ 			//window.open("../protegido/frmMain.jsp",target="_self");
+ 		    
+ 			var sociedad= document.form1.cmbSociedad.value;
+ 			if (sociedad==""){
+ 				alert("Debe escoger Sociedad.");
+ 				return;
+ 			}
+ 			
+ 			document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
+ 			document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
+ 			//document.form1.submit();
+ 			
+ 							
+ 			  var elemento5 = document.getElementById("ingresarOTP_td");
+ 			  var elemento6 = document.getElementById("ingresarOTP1_td");
+ 			  var elemento7 = document.getElementById("ingresarOTP_input");
+ 			  var elemento8 = document.getElementById("elemento8");
+ 			  var elemento9 = document.getElementById("btnReenviar");
+ 				   
+ 			    elemento5.style.display = "table-cell";
+ 			    elemento6.style.display = "table-cell";
+ 			    elemento7.style.display = "table-cell"; 
+ 			    elemento8.style.display = "block";
+ 			    elemento9.style.display = "block";
+ 			    
+ 			 $("#txtCorreo").val("<%=correo%>");
+ 			   
+
+ 		 //if ((mostrar)== false) {
+ 			 //elemento1.style.display = "none";
+ 			   // elemento2.style.display = "none";
+ 			    //elemento3.style.display = "none";
+ 			    //elemento4.style.display = "bnone"		    
+ 			    //elemento5.style.display = "none";
+ 			    //elemento6.style.display = "none";
+ 			    //elemento7.style.display = "none";
+ 		// } else {
+ 			//	     ventanaError();
+ 			  //}
+ 		  
+ 			 document.getElementById("btnaceptar").hidden = true;
+ 			document.getElementById("btnReenviar").hidden = false;
+ 			 //document.getElementById("btnReenviar").hidden = true;
+ 		     ingresarOTP_input.value = "";
+ 		}
+ 		
+ 	}
+	
+	
+
+</script>
+	
 </body>
+
+
+
 </html>
 
 

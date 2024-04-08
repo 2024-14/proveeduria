@@ -32,6 +32,14 @@
   <servlet-class>com.servlet.RevisarCodigo</servlet-class>
   <load-on-startup>1</load-on-startup>
  </servlet>
+ 
+ <servlet>
+  <display-name>ReenviarCodigo</display-name>
+  <servlet-name>ReenviarCodigo</servlet-name>
+  <servlet-class>com.servlet.ReenviarCodigo</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ 
  <!-- <servlet-mapping>
   <servlet-name>Transaccion</servlet-name>
   <url-pattern>/paginas/protegido/despacho.jsp</url-pattern>
@@ -44,10 +52,14 @@
  </servlet-mapping>
  
  
- 
  <servlet-mapping>
   <servlet-name>RevisarCodigo</servlet-name>
   <url-pattern>/paginas/login/RevisarCodigo.jsp</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>ReenviarCodigo</servlet-name>
+  <url-pattern>/paginas/login/ReenviarCodigo.jsp</url-pattern>
  </servlet-mapping>
  
  

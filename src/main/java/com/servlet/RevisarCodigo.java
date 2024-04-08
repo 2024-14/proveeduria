@@ -51,6 +51,9 @@ public class RevisarCodigo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ldFormat = DateFormat.getDateInstance();
+        jspFactory = null;
+        ldFecha = new Date();
 		final String lsFecha = this.ldFormat.format(this.ldFecha).toString();
         (this.session = request.getSession(true)).setAttribute("DATE", (Object)lsFecha);
         try {
@@ -84,15 +87,14 @@ public class RevisarCodigo extends HttpServlet {
     
 	
 	protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws SQLException, Exception {
-		response. setContentType("text/html;charsetsUTF=8");
-		
+		//response. setContentType("text/html;charsetsUTF=8");
 		
 		  int lnErrorSP = 1;
 	      String lsErrorSP = "";
 	        
 	final String ls_usuario = request.getParameter("usuario");
 	final String ls_codigo = request.getParameter("codigo");
-	final String ls_correo = request.getParameter("correo");
+    String ls_correo ="";
 	PrintWriter out = response.getWriter();
 	
 	 this.jspFactory = JspFactory.getDefaultFactory();
@@ -101,6 +103,19 @@ public class RevisarCodigo extends HttpServlet {
         boolean lb_existe = false;
         
      	        
+        CallableStatement cst = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO2 (?,?,?,?)}");
+        cst.setString(1, ls_usuario);
+        
+        // Definimos los tipos de los parametros de salida del procedimiento almacenado
+        cst.registerOutParameter(2, java.sql.Types.VARCHAR);
+        cst.registerOutParameter(3, java.sql.Types.INTEGER);
+        cst.registerOutParameter(4, java.sql.Types.VARCHAR);
+        
+        // Ejecuta el procedimiento almacenado
+        cst.executeQuery();
+        
+        // Se obtienen la salida del procedimineto almacenado
+        ls_correo = cst.getString(2);
         
 	// Llamada al procedimiento almacenado
     CallableStatement cst_validarfinal = this.cb.getConnection().prepareCall("{call SAP.SAP_PORTAL_PROV.SWP_CONSULTAR_CODIGO_OTP (?,?,?,?,?)}");
@@ -122,10 +137,10 @@ public class RevisarCodigo extends HttpServlet {
       	   this.session.setAttribute("AUTH", (Object)"false");
            this.session.setAttribute("ERROR", (Object)lsErrorSP);
            //(revisiones.rd = request.getRequestDispatcher("../general/error.jsp")).forward((ServletRequest)request, (ServletResponse)response);
-           out.println("error");
+           out.print(lsErrorSP);
       }else {
     	//  revisiones.rd = request.getRequestDispatcher("../protegido/frmMain.jsp"); //"../protegido/frmMain.jsp"
-    	  out.println("success");
+    	  out.print("exito");
       }
 	
 	

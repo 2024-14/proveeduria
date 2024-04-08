@@ -93,7 +93,7 @@ Proyecto: [x]-Portal de Proveeduria
 			function inicializar(){
 				ventanaError();
 				document.form1.txtUser.focus();
-				revisar_logon();
+				//revisar_logon();
 			}
 			
 			function ventanaError(){
@@ -199,7 +199,6 @@ Proyecto: [x]-Portal de Proveeduria
 				  var input = document.getElementById("ingresarOTP_input");
 				  var button = document.getElementById("elemento8");
 
-				  
 				  // Verifica si el input tiene 6 números
 				    if (input.value.length === 6) {
 				    	 //button.disabled = false;
@@ -212,49 +211,146 @@ Proyecto: [x]-Portal de Proveeduria
 			}
 			
 			
-			
-			function holas(){
-				var h = $("#txtUser").val();
-				alert(h);
+			function RevisarUsuario(){		
+			    var ls_clave = $("#txtPass").val(); // Obtener código del valor de entrada
+			    var ls_usuario = $("#txtUser").val(); // Obtener código del valor de entrada
+			    var ls_sociedad = $("#cmbSociedad").val(); // Obtener código del valor de entrada
+			   
+			    $.ajax({
+			      url: "ReenviarCodigo.jsp", // Reemplace con la URL de su servlet
+			      type: "POST",
+			      data: {
+			        usuario: ls_usuario,
+			        clave : ls_clave,
+			        sociedad: ls_sociedad,
+			        //procedimiento: "SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO "
+			      },
+			      success: function(respuesta) {
+			    	  console.log(respuesta);
+			        // Respuesta del proceso del servlet
+			        if (respuesta == "exito") {
+			          // Redirigir a página protegida
+						alert("Codigo enviado, revise su correo");
+			          
+						var sociedad= document.form1.cmbSociedad.value;
+			 			if (sociedad==""){
+			 				alert("Debe escoger Sociedad.");
+			 				return;
+			 			}
+			 			
+			 			document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
+			 			document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
+			 								
+			 			  var elemento5 = document.getElementById("ingresarOTP_td");
+			 			  var elemento6 = document.getElementById("ingresarOTP1_td");
+			 			  var elemento7 = document.getElementById("ingresarOTP_input");
+			 			  var elemento8 = document.getElementById("elemento8");
+			 			  var elemento9 = document.getElementById("btnReenviar");
+			 				   
+			 			    elemento5.style.display = "table-cell";
+			 			    elemento6.style.display = "table-cell";
+			 			    elemento7.style.display = "table-cell"; 
+			 			    elemento8.style.display = "block";
+			 			    elemento9.style.display = "block";
+			 			     
+			 		  
+			 			 document.getElementById("btnaceptar").hidden = true;
+			 			document.getElementById("btnReenviar").hidden = false;
+			 			 //document.getElementById("btnReenviar").hidden = true;
+			 		     ingresarOTP_input.value = "";
+			 		  
+			        } else {
+			          // Mostrar mensaje de error
+						alert("No se ha podido enviar el código");
+			          alert("Error: " + respuesta);
+			        }
+			        //button.clicked = false; // Botón de reinicio hecho clic en la bandera para el próximo uso
+			      },
+			      error: function(error) {
+			        console.error("Error calling stored procedure:", error);
+			      }
+			    });
+			  
 			}
 			
+			function RevisarOTP(){		
+			   
+			    var ls_usuario = $("#txtUser").val(); // Obtener código del valor de entrada
+			    var ls_codigo = $("#ingresarOTP_input").val();
+			   
+			    $.ajax({
+			      url: "RevisarCodigo.jsp", // Reemplace con la URL de su servlet
+			      type: "POST",
+			      data: {
+			        usuario: ls_usuario,
+			        codigo : ls_codigo,
+			        //procedimiento: "SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO "
+			      },
+			      success: function(respuesta) {
+			    	  console.log(respuesta);
+			        // Respuesta del proceso del servlet
+			        if (respuesta == "exito") {
+			          // Redirigir a página protegida
+						alert("Ingreso a la pagina");
+			 		  
+			        } else {
+			          // Mostrar mensaje de error
+						alert(respuesta);
+			          //alert("Error: " + respuesta.error);
+			        }
+			        //button.clicked = false; // Botón de reinicio hecho clic en la bandera para el próximo uso
+			      },
+			      error: function(error) {
+			        console.error("Error calling stored procedure:", error);
+			      }
+			    });
+			  
+			}
 			
-			function validarBoton2(){
-				 
-				    var ls_usuario = $("#txtUser").val(); // Reemplace con su lógica para obtener valor para el usuario
-				    var ls_correo = $("#txtCorreo").val(); // Reemplace con su lógica para obtener valor de correo 
-				    var ls_codigo = $("#txtPass").val(); // Obtener código del valor de entrada
-				   
-				    console.log(ls_correo);
-
-				    $.ajax({
-				      url: "RevisarCodigo.jsp", // Reemplace con la URL de su servlet
-				      type: "POST",
-				      data: {
-				        usuario: ls_usuario,
-				        correo: ls_correo,
-				        codigo: ls_codigo,
-				        //procedimiento: "SAP.SAP_PORTAL_PROV.SWP_CONSULTAR_CODIGO_OTP"
-				      },
-				      success: function(respuesta) {
-				        // Respuesta del proceso del servlet
-				        if (respuesta.resultado === "success") {
-				          // Redirigir a página protegida
-							alert("entro a la pagina");
-//				          window.location.href = "../protegido/frmMain.jsp";
-				        } else {
-				          // Mostrar mensaje de error
-							alert("entro a la pagina de error");
-				          alert("Error: " + respuesta.error);
-				        }
-				        //button.clicked = false; // Botón de reinicio hecho clic en la bandera para el próximo uso
-				      },
-				      error: function(error) {
-				        console.error("Error calling stored procedure:", error);
-				      }
-				    });
-				  
-				}
+			function ReenviarOTP(){		
+			    var ls_clave = $("#txtPass").val(); // Obtener código del valor de entrada
+			    var ls_usuario = $("#txtUser").val(); // Obtener código del valor de entrada
+			    var ls_sociedad = $("#cmbSociedad").val(); // Obtener código del valor de entrada
+			   
+			    $.ajax({
+			      url: "ReenviarCodigo.jsp", // Reemplace con la URL de su servlet
+			      type: "POST",
+			      data: {
+			        usuario: ls_usuario,
+			        clave : ls_clave,
+			        sociedad: ls_sociedad,
+			        //procedimiento: "SAP.SAP_PORTAL_PROV.SWP_CONSULTA_CORREO "
+			      },
+			      success: function(respuesta) {
+			    	  console.log(respuesta);
+			        // Respuesta del proceso del servlet
+			        if (respuesta == "exito") {
+			          // Redirigir a página protegida
+						alert("Nuevo código enviado, revise su correo");
+			          
+						var sociedad= document.form1.cmbSociedad.value;
+			 			if (sociedad==""){
+			 				alert("Debe escoger Sociedad.");
+			 				return;
+			 			}
+			 			
+			 			document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
+			 			document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();			
+			 		  
+			        } else {
+			          // Mostrar mensaje de error
+						alert("No se ha podido reenviar el código");
+			          alert("Error: " + respuesta);
+			        }
+			        //button.clicked = false; // Botón de reinicio hecho clic en la bandera para el próximo uso
+			      },
+			      error: function(error) {
+			        console.error("Error calling stored procedure:", error);
+			      }
+			    });
+			  
+			}
+			
 			
 
 				
@@ -327,7 +423,7 @@ Proyecto: [x]-Portal de Proveeduria
 					                        <td id="ingresarOTP1_td" width="150" class="etiqueta_formulario" height="30" align="center" style="display: none;">
 					                        	<input style="margin-top:10px;" id="ingresarOTP_input" name="txtOtp" type="text"  pattern="[0-9]+" class="uppercase" value="" maxlength="6" style="display: none;" onkeyup="validarBoton()" onkeypress="return valideKey(event); ">
 				                     		     <br />
-				                     			<button style="margin-top:10px; margin-bottom:10px; " id="elemento8" type="button"  name="btnValidar" style="display: none;"  onclick="validarBoton2();" disabled>Validar Código</button>			              
+				                     			<button style="margin-top:10px; margin-bottom:10px; " id="elemento8" type="button"  name="btnValidar" style="display: none;"  onclick="RevisarOTP();" disabled>Validar Código</button>			              
 				                     			</td>
 
 				                     	</tr>
@@ -335,11 +431,11 @@ Proyecto: [x]-Portal de Proveeduria
 	                    				<tr>
 	                    				
 	                        				<td width="150" ><center>
-	                        					<a href="#" id="btnaceptar" onclick="ok();"> 
+	                        					<a href="#" id="btnaceptar" onclick="RevisarUsuario();"> 
 	            			  						<img src="../../imagenes/btnaceptar1.gif" name="Image148211" border="0" height="44" width="44" />
 	            			  					</a>
 	            			  					
-	            			  					<a href="#" id="btnReenviar" onclick="holas();" hidden>
+	            			  					<a href="#" id="btnReenviar" onclick="ReenviarOTP();" hidden>
 				              						<img src="../../imagenes/btnReenviar.jpg" name="Image15000" border="0" height="44" width="44" />
 				              					</a>
 	            			  					

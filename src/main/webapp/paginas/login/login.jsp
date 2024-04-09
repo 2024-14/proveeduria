@@ -133,52 +133,6 @@ Proyecto: [x]-Portal de Proveeduria
 				var estadoNew = document.form1.cmbSociedad.value;
 	 		}
 				
-			function mostrarOcultarElementos2() { //mostrar  
-				  
-				var sociedad= document.form1.cmbSociedad.value;
-				if (sociedad==""){
-					alert("Debe escoger Sociedad.");
-					return;
-				
-				}
-				
-				document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
-				document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
-				//document.form1.submit();
-				
-								
-				  var elemento5 = document.getElementById("ingresarOTP_td");
-				  var elemento6 = document.getElementById("ingresarOTP1_td");
-				  var elemento7 = document.getElementById("ingresarOTP_input");
-				  var elemento8 = document.getElementById("elemento8");
-				  var elemento9 = document.getElementById("elemento9");
-	  			   
-				    elemento5.style.display = "table-cell";
-				    elemento6.style.display = "table-cell";
-				    elemento7.style.display = "table-cell"; 
-				    elemento8.style.display = "block";
-				    elemento9.style.display = "block";
-
-			 //if ((mostrar)== false) {
-				 //elemento1.style.display = "none";
-				   // elemento2.style.display = "none";
-				    //elemento3.style.display = "none";
-				    //elemento4.style.display = "bnone"		    
-				    //elemento5.style.display = "none";
-				    //elemento6.style.display = "none";
-				    //elemento7.style.display = "none";
-			// } else {
-				//	     ventanaError();
-				  //}
-			 
-				 document.getElementById("btnaceptar").hidden = true;
-				 //document.getElementById("btnReenviar").hidden;
-				
-			     ingresarOTP_input.value = "";
-				
-			}
-			
-			
 			
 			
 			function valideKey(evt){	
@@ -251,11 +205,10 @@ Proyecto: [x]-Portal de Proveeduria
 			 			    elemento6.style.display = "table-cell";
 			 			    elemento7.style.display = "table-cell"; 
 			 			    elemento8.style.display = "block";
-			 			    elemento9.style.display = "block";
+			 			   // elemento9.style.display = "block";
 			 			     
 			 		  
 			 			 document.getElementById("btnaceptar").hidden = true;
-			 			document.getElementById("btnReenviar").hidden = false;
 			 			 //document.getElementById("btnReenviar").hidden = true;
 			 		     ingresarOTP_input.value = "";
 			 		  
@@ -291,11 +244,17 @@ Proyecto: [x]-Portal de Proveeduria
 			        // Respuesta del proceso del servlet
 			        if (respuesta == "exito") {
 			          // Redirigir a página protegida
-						alert("Ingreso a la pagina");
+			          document.getElementById("btnReenviar").hidden = true;
+			          window.open('../protegido/frmMain.jsp', '_self'); //_blank
+						//alert("Ingreso a la pagina");
 			 		  
 			        } else {
 			          // Mostrar mensaje de error
 						alert(respuesta);
+						var elemento9 = document.getElementById("btnReenviar");
+						elemento9.style.display = "block";
+						document.getElementById("btnReenviar").hidden = false;
+				 		
 			          //alert("Error: " + respuesta.error);
 			        }
 			        //button.clicked = false; // Botón de reinicio hecho clic en la bandera para el próximo uso
@@ -472,67 +431,7 @@ Proyecto: [x]-Portal de Proveeduria
 		</tr>
 	</table>
 	
-	<script type="text/javascript">
 	
-	
- 	function revisar_logon(){
- 		if("<%=logon%>" == "true"){ 
- 			 
- 			//alert("ya esta logueado");
- 			//alert(correos);
- 			//mostrarOcultarElementos2();
- 			
- 			//window.open("../protegido/frmMain.jsp",target="_self");
- 		    
- 			var sociedad= document.form1.cmbSociedad.value;
- 			if (sociedad==""){
- 				alert("Debe escoger Sociedad.");
- 				return;
- 			}
- 			
- 			document.form1.txtUser.value = document.form1.txtUser.value.toUpperCase();
- 			document.form1.txtPassword.value = document.form1.txtPassword.value.toUpperCase();
- 			//document.form1.submit();
- 			
- 							
- 			  var elemento5 = document.getElementById("ingresarOTP_td");
- 			  var elemento6 = document.getElementById("ingresarOTP1_td");
- 			  var elemento7 = document.getElementById("ingresarOTP_input");
- 			  var elemento8 = document.getElementById("elemento8");
- 			  var elemento9 = document.getElementById("btnReenviar");
- 				   
- 			    elemento5.style.display = "table-cell";
- 			    elemento6.style.display = "table-cell";
- 			    elemento7.style.display = "table-cell"; 
- 			    elemento8.style.display = "block";
- 			    elemento9.style.display = "block";
- 			    
- 			 $("#txtCorreo").val("<%=correo%>");
- 			   
-
- 		 //if ((mostrar)== false) {
- 			 //elemento1.style.display = "none";
- 			   // elemento2.style.display = "none";
- 			    //elemento3.style.display = "none";
- 			    //elemento4.style.display = "bnone"		    
- 			    //elemento5.style.display = "none";
- 			    //elemento6.style.display = "none";
- 			    //elemento7.style.display = "none";
- 		// } else {
- 			//	     ventanaError();
- 			  //}
- 		  
- 			 document.getElementById("btnaceptar").hidden = true;
- 			document.getElementById("btnReenviar").hidden = false;
- 			 //document.getElementById("btnReenviar").hidden = true;
- 		     ingresarOTP_input.value = "";
- 		}
- 		
- 	}
-	
-	
-
-</script>
 	
 </body>
 
